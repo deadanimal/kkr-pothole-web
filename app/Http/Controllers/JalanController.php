@@ -9,7 +9,8 @@ class JalanController extends Controller
 {
     public function index()
     {
-        //
+        $jalan = Jalan::all();
+        return $jalan;
     }
 
     public function create()
@@ -19,12 +20,14 @@ class JalanController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $jalan = new Jalan;
+        $jalan->save();
+        return $jalan;
     }
 
     public function show(Aduan $aduan)
     {
-        //
+        return $jalan;
     }
 
     public function edit(Aduan $aduan)
@@ -34,7 +37,8 @@ class JalanController extends Controller
 
     public function update(Request $request, Aduan $aduan)
     {
-        //
+        $jalan->save();
+        return $jalan;
     }
 
     public function destroy(Aduan $aduan)

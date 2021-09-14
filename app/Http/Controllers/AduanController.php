@@ -9,7 +9,8 @@ class AduanController extends Controller
 {
     public function index()
     {
-        //
+        $aduan = Aduan::all();
+        return $aduan;
     }
 
     public function create()
@@ -19,12 +20,15 @@ class AduanController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $aduan = new Aduan;
+
+        $aduan->save();
+        return $aduan;
     }
 
     public function show(Aduan $aduan)
     {
-        //
+        return $aduan;
     }
 
     public function edit(Aduan $aduan)
@@ -34,7 +38,8 @@ class AduanController extends Controller
 
     public function update(Request $request, Aduan $aduan)
     {
-        //
+        $aduan->save();
+        return $aduan;
     }
 
     public function destroy(Aduan $aduan)
