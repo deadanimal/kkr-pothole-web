@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+use App\Models\Jalan;
+use Illuminate\Http\Request;
 
-class Controller extends BaseController
+class JalanController extends Controller
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-}
-
-
-/*
     public function index()
     {
-        //
+        $jalan = Jalan::all();
+        return $jalan;
     }
 
     public function create()
@@ -26,12 +20,14 @@ class Controller extends BaseController
 
     public function store(Request $request)
     {
-        //
+        $jalan = new Jalan;
+        $jalan->save();
+        return $jalan;
     }
 
     public function show(Aduan $aduan)
     {
-        //
+        return $jalan;
     }
 
     public function edit(Aduan $aduan)
@@ -41,11 +37,12 @@ class Controller extends BaseController
 
     public function update(Request $request, Aduan $aduan)
     {
-        //
+        $jalan->save();
+        return $jalan;
     }
 
     public function destroy(Aduan $aduan)
     {
         //
     }
-*/
+}

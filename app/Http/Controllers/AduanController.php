@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+use App\Models\Aduan;
+use Illuminate\Http\Request;
 
-class Controller extends BaseController
+class AduanController extends Controller
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-}
-
-
-/*
     public function index()
     {
-        //
+        $aduan = Aduan::all();
+        return $aduan;
     }
 
     public function create()
@@ -26,12 +20,15 @@ class Controller extends BaseController
 
     public function store(Request $request)
     {
-        //
+        $aduan = new Aduan;
+
+        $aduan->save();
+        return $aduan;
     }
 
     public function show(Aduan $aduan)
     {
-        //
+        return $aduan;
     }
 
     public function edit(Aduan $aduan)
@@ -41,11 +38,12 @@ class Controller extends BaseController
 
     public function update(Request $request, Aduan $aduan)
     {
-        //
+        $aduan->save();
+        return $aduan;
     }
 
     public function destroy(Aduan $aduan)
     {
         //
     }
-*/
+}
