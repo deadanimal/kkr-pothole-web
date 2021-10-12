@@ -15,6 +15,7 @@ class CreateAduansTable extends Migration
     {
         Schema::create('aduans', function (Blueprint $table) {
             $table->id();
+            $table->string('tajuk')->nullable();
             $table->text('keterangan')->nullable();
             $table->string('daerah')->nullable();
             $table->string('negeri')->nullable();
