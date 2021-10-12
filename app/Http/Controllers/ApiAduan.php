@@ -30,7 +30,7 @@ class ApiAduan extends Controller
         $aduan->pengadu_id = $request->pengadu_id;
         $aduan->save();
         
-        return response()->json($aduan);
+        return $aduan;
     }
 
     public function show(Aduan $aduan)
