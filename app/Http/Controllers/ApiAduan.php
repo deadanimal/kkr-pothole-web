@@ -21,14 +21,13 @@ class ApiAduan extends Controller
     public function store(Request $request)
     {
         $aduan = new Aduan;
-        $aduan->complaint_title = $request->complaint_title;
-        $aduan->complaint_detail = $request->complaint_detail;
-        $aduan->gambar_aduan_path = $request->gambar_aduan_path;
-        $aduan->latitud_aduan = $request->latitud_aduan;
-        $aduan->langitud_aduan = $request->langitud_aduan;
-        $aduan->kategori_jalan_aduan = $request->kategori_jalan_aduan;
-        $aduan->negeri_aduan = $request->negeri_aduan;
-        $aduan->id_pengguna = $request->id_pengguna;
+        $aduan->tajuk = $request->tajuk;
+        $aduan->keterangan = $request->keterangan;
+        $aduan->gambar_id = $request->gambar_id;
+        $aduan->lokasi = $request->lokasi;
+        $aduan->kategori_jalan = $request->kategori_jalan_aduan;
+        $aduan->negeri = $request->negeri;
+        $aduan->pengadu_id = $request->pengadu_id;
         $aduan->save();
         
         return response()->json($aduan);
