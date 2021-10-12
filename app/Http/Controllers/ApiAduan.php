@@ -29,6 +29,7 @@ class ApiAduan extends Controller
         $aduan->negeri = $request->negeri;
         $aduan->pengadu_id = $request->pengadu_id;
         $aduan->save();
+        dd($aduan);
         
         return $aduan;
     }
