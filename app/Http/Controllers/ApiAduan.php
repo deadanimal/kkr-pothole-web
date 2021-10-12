@@ -10,7 +10,7 @@ class ApiAduan extends Controller
     public function index()
     {
         $aduan = Aduan::all();
-        return $aduan;
+        return response()->json($aduan);
     }
 
     public function create()
@@ -21,9 +21,17 @@ class ApiAduan extends Controller
     public function store(Request $request)
     {
         $aduan = new Aduan;
-
+        $aduan->complaint_title = $request->complaint_title;
+        $aduan->complaint_detail = $request->complaint_detail;
+        $aduan->gambar_aduan_path = $request->gambar_aduan_path;
+        $aduan->latitud_aduan = $request->latitud_aduan;
+        $aduan->langitud_aduan = $request->langitud_aduan;
+        $aduan->kategori_jalan_aduan = $request->kategori_jalan_aduan;
+        $aduan->negeri_aduan = $request->negeri_aduan;
+        $aduan->id_pengguna = $request->id_pengguna;
         $aduan->save();
-        return $aduan;
+        
+        return response()->json($aduan);
     }
 
     public function show(Aduan $aduan)
