@@ -46,16 +46,15 @@ class ApiAduan extends Controller
 
     public function update(Request $request, Aduan $aduan)
     {
-        $aduan->update([
-            'tajuk' => $request->tajuk,
-            'keterangan' => $request->keterangan,
-            'kategori_jalan' => $request->kategori_jalan,
-            'gambar_id' => $request->gambar_id,
-            'lokasi' => $request->lokasi, //GeoJSON
-            'daerah' => $request->daerah,
-            'negeri' => $request->negeri,
-            'pengadu_id' => $request->pengadu_id,
-        ]);
+        $aduan->tajuk = $request->tajuk;
+        $aduan->keterangan = $request->keterangan;
+        $aduan->kategori_jalan = $request->kategori_jalan;
+        $aduan->gambar_id = $request->gambar_id;
+        $aduan->lokasi = $request->lokasi; //GeoJSON
+        $aduan->daerah = $request->daerah;
+        $aduan->negeri = $request->negeri;
+        $aduan->pengadu_id = $request->pengadu_id;
+        $aduan->save();
 
         return response()->json($aduan);
     }
