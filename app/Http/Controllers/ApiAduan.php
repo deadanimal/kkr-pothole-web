@@ -21,11 +21,12 @@ class ApiAduan extends Controller
     public function store(Request $request)
     {
         $aduan = new Aduan;
-        $aduan->tajuk = $request->tajuk;
-        $aduan->keterangan = $request->keterangan;
+        $aduan->title = $request->tajuk;
+        $aduan->detail = $request->detail;
         $aduan->kategori_jalan = $request->kategori_jalan;
         $aduan->gambar_id = $request->gambar_id;
-        $aduan->lokasi = $request->lokasi; //GeoJSON
+        $aduan->latitud = $request->latitud;
+        $aduan->langitud = $request->langitud;
         $aduan->daerah = $request->daerah;
         $aduan->negeri = $request->negeri;
         $aduan->pengadu_id = $request->pengadu_id;
@@ -46,12 +47,12 @@ class ApiAduan extends Controller
 
     public function update(Request $request, Aduan $aduan)
     {
-        //$aduan = Aduan::where('id', $aduan->id)->first();
-        $aduan->tajuk = $request->tajuk;
-        $aduan->keterangan = $request->keterangan;
+        $aduan->title = $request->title;
+        $aduan->detail = $request->detail;
         $aduan->kategori_jalan = $request->kategori_jalan;
         $aduan->gambar_id = $request->gambar_id;
-        $aduan->lokasi = $request->lokasi; //GeoJSON
+        $aduan->latitud = $request->latitud;
+        $aduan->langitud = $request->langitud;
         $aduan->daerah = $request->daerah;
         $aduan->negeri = $request->negeri;
         $aduan->pengadu_id = $request->pengadu_id;

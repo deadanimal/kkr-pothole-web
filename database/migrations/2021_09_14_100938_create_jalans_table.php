@@ -15,13 +15,12 @@ class CreateJalansTable extends Migration
     {
         Schema::create('jalans', function (Blueprint $table) {
             $table->id();
-            $table->text('maklumat')->nullable();
+            $table->text('detail')->nullable();
             $table->string('alamat')->nullable();
             $table->string('daerah')->nullable();
             $table->string('negeri')->nullable();
             $table->string('poskod')->nullable();
             $table->string('status')->nullable();
-            $table->string('kawasan')->nullable(); // GeoJSON
             $table->foreignId('admin_id')->nullable();
             $table->foreignId('created_by')->nullable();
             $table->foreignId('modified_by')->nullable();

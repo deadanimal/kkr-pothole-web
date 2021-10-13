@@ -15,20 +15,20 @@ class CreateAduansTable extends Migration
     {
         Schema::create('aduans', function (Blueprint $table) {
             $table->id();
-            $table->string('tajuk')->nullable();
-            $table->text('keterangan')->nullable();
+            $table->string('title')->nullable();
+            $table->text('detail')->nullable();
             $table->string('kategori_jalan')->nullable();
             $table->string('daerah')->nullable();
             $table->string('negeri')->nullable();
             $table->string('poskod')->nullable();
             $table->string('status')->nullable();
-            $table->string('lokasi')->nullable(); // GeoJSON
+            $table->string('latitud')->nullable();
+            $table->string('langitud')->nullable(); // GeoJSON
             $table->foreignId('gambar_id')->nullable();
             $table->foreignId('pengadu_id')->nullable();
-            $table->foreignId('pihak_bertanggungjawap_id')->nullable();
-            $table->string('kod_status')->nullable();
+            $table->foreignId('response_code')->nullable();
+            $table->string('status_code')->nullable();
             $table->string('sispaa_id')->nullable();
-            $table->string('penerangan_status')->nullable();
             $table->text('nota')->nullable();
             $table->foreignId('created_by')->nullable();
             $table->foreignId('modified_by')->nullable();

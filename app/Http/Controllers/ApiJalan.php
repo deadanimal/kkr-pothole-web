@@ -10,7 +10,7 @@ class ApiJalan extends Controller
     public function index()
     {
         $jalan = Jalan::all();
-        return $jalan;
+        return response()->json($jalan);
     }
 
     public function create()
@@ -21,28 +21,46 @@ class ApiJalan extends Controller
     public function store(Request $request)
     {
         $jalan = new Jalan;
+        $jalan->detail = $request->detail;
+        $jalan->alamat = $request->alamat;
+        $jalan->daerah = $request->daerah;
+        $jalan->negeri = $request->negeri;
+        $jalan->poskod = $request->poskod;
+        $jalan->status = $request->status;
+        $jalan->admin_id = $request->admin_id;
         $jalan->save();
-        return $jalan;
+
+        return response()->json($jalan);
     }
 
-    public function show(Aduan $aduan)
+    public function show(Jalan $jalan)
     {
         return $jalan;
     }
 
-    public function edit(Aduan $aduan)
+    public function edit(Jalan $jalan)
     {
         //
     }
 
-    public function update(Request $request, Aduan $aduan)
+    public function update(Request $request, Jalan $jalan)
     {
+        $jalan->detail = $request->detail;
+        $jalan->alamat = $request->alamat;
+        $jalan->daerah = $request->daerah;
+        $jalan->negeri = $request->negeri;
+        $jalan->poskod = $request->poskod;
+        $jalan->status = $request->status;
+        $jalan->admin_id = $request->admin_id;
         $jalan->save();
-        return $jalan;
+
+        return response()->json($jalan);
     }
 
-    public function destroy(Aduan $aduan)
+    public function destroy(Jalan $jalan)
     {
-        //
+        $jalan->delete();
+        return response()->json($jalan);
     }
 }
+
