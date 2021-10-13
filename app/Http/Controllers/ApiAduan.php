@@ -26,9 +26,9 @@ class ApiAduan extends Controller
         $aduan->kategori_jalan = $request->kategori_jalan;
         $aduan->gambar_id = $request->gambar_id;
         $aduan->lokasi = $request->lokasi; //GeoJSON
-        // $aduan->daerah = $request->daerah;
+        $aduan->daerah = $request->daerah;
         $aduan->negeri = $request->negeri;
-        // $aduan->pengadu_id = $request->pengadu_id;
+        $aduan->pengadu_id = $request->pengadu_id;
         $aduan->save();
 
         return response()->json($aduan);
@@ -46,12 +46,23 @@ class ApiAduan extends Controller
 
     public function update(Request $request, Aduan $aduan)
     {
-        $aduan->save();
-        return $aduan;
+        $aduan->update([
+            'tajuk' => $request->tajuk,
+            'keterangan' => $request->keterangan,
+            'kategori_jalan' => $request->kategori_jalan,
+            'gambar_id' => $request->gambar_id,
+            'lokasi' => $request->lokasi, //GeoJSON
+            'daerah' => $request->daerah,
+            'negeri' => $request->negeri,
+            'pengadu_id' => $request->pengadu_id,
+        ]);
+
+        return response()->json($aduan);
     }
 
     public function destroy(Aduan $aduan)
     {
-        //
+        $aduan->delete();
+        return response()->json($aduan);
     }
 }
