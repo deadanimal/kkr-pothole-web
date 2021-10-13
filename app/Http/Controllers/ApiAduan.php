@@ -46,7 +46,7 @@ class ApiAduan extends Controller
 
     public function update(Request $request, Aduan $aduan)
     {
-        $aduan = Aduan::where('id', $aduan->id)->first();
+        //$aduan = Aduan::where('id', $aduan->id)->first();
         $aduan->tajuk = $request->tajuk;
         $aduan->keterangan = $request->keterangan;
         $aduan->kategori_jalan = $request->kategori_jalan;
