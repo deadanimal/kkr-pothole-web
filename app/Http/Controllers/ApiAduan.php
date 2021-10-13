@@ -23,14 +23,15 @@ class ApiAduan extends Controller
         $aduan = new Aduan;
         $aduan->tajuk = $request->tajuk;
         $aduan->keterangan = $request->keterangan;
+        $aduan->kategori_jalan = $request->kategori_jalan;
         $aduan->gambar_id = $request->gambar_id;
-        $aduan->lokasi = $request->lokasi;
-        $aduan->kategori_jalan = $request->kategori_jalan_aduan;
+        $aduan->lokasi = $request->lokasi; //GeoJSON
+        // $aduan->daerah = $request->daerah;
         $aduan->negeri = $request->negeri;
-        $aduan->pengadu_id = $request->pengadu_id;
+        // $aduan->pengadu_id = $request->pengadu_id;
         $aduan->save();
-        
-        return $aduan;
+
+        return response()->json($aduan);
     }
 
     public function show(Aduan $aduan)

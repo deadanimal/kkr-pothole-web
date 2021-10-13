@@ -22,8 +22,9 @@ class CreateJalansTable extends Migration
             $table->string('poskod')->nullable();
             $table->string('status')->nullable();
             $table->string('kawasan')->nullable(); // GeoJSON
+            $table->foreignId('admin_id')->nullable();
             $table->foreignId('created_by')->nullable();
-            $table->foreignId('modified_by')->nullable();            
+            $table->foreignId('modified_by')->nullable();
             $table->timestamps();
         });
     }

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->enum('role', ['pengadu', 'admin', 'super_admin'])->default('pengadu');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->foreignId('organisasi_id')->nullable();
             $table->foreignId('created_by')->nullable();
             $table->foreignId('modified_by')->nullable();
             $table->rememberToken();
