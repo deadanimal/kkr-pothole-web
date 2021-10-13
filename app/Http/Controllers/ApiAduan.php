@@ -51,8 +51,8 @@ class ApiAduan extends Controller
             'keterangan' => $request->keterangan,
             'kategori_jalan' => $request->kategori_jalan,
             // 'gambar_id' => $request->gambar_id,
-            'lokasi' => $request->lokasi, //GeoJSON
-            'daerah' => $request->daerah,
+            // 'lokasi' => $request->lokasi, //GeoJSON
+            // 'daerah' => $request->daerah,
             'negeri' => $request->negeri,
             // 'pengadu_id' => $request->pengadu_id,
         ]);
