@@ -20,7 +20,7 @@ class ApiAduan extends Controller
 
     public function store(Request $request)
     {
-        Aduan::create([
+        $aduan = Aduan::create([
             'tajuk' => $request->tajuk,
             'keterangan' => $request->keterangan,
             'kategori_jalan' => $request->kategori_jalan,
