@@ -21,7 +21,7 @@ class ApiAduan extends Controller
     public function store(Request $request)
     {
         $aduan = new Aduan;
-        $aduan->title = $request->tajuk;
+        $aduan->title = $request->title;
         $aduan->detail = $request->detail;
         $aduan->kategori_jalan = $request->kategori_jalan;
         $aduan->gambar_id = $request->gambar_id;
