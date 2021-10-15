@@ -21,7 +21,11 @@ class ApiJalan extends Controller
     public function store(Request $request)
     {
         $jalan = new Jalan;
+        $jalan->name = $request->name;
         $jalan->detail = $request->detail;
+        $jalan->start_date = $request->start_date;
+        $jalan->start_date = $request->start_date;
+        $jalan->response_party = $request->response_party;
         $jalan->alamat = $request->alamat;
         $jalan->daerah = $request->daerah;
         $jalan->negeri = $request->negeri;
@@ -45,7 +49,11 @@ class ApiJalan extends Controller
 
     public function update(Request $request, Jalan $jalan)
     {
+        $jalan->name = $request->name;
         $jalan->detail = $request->detail;
+        $jalan->start_date = $request->start_date;
+        $jalan->start_date = $request->start_date;
+        $jalan->response_party = $request->response_party;
         $jalan->alamat = $request->alamat;
         $jalan->daerah = $request->daerah;
         $jalan->negeri = $request->negeri;
