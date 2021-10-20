@@ -12,7 +12,7 @@ Route::resource('jalan', ApiJalan::class);
 //register new user
 Route::post('/register', [AuthController::class, 'registerUser']);
 //login user
-Route::post('/login', [AuthController::class, 'signin']);
+Route::post('/login', [AuthController::class, 'login']);
 //using middleware
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/profile', function(Request $request) {
