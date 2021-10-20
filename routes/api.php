@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ApiAduan;
 use App\Http\Controllers\AuthController;
+use App\Models\User;
 
 Route::resource('aduan', ApiAduan::class);
 
