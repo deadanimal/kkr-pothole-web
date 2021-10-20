@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ApiAduan;
+use App\Http\Controllers\AuthController;
+
 Route::resource('aduan', ApiAduan::class);
 
 use App\Http\Controllers\ApiJalan;
