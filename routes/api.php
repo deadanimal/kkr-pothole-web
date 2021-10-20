@@ -9,7 +9,18 @@ Route::resource('aduan', ApiAduan::class);
 use App\Http\Controllers\ApiJalan;
 Route::resource('jalan', ApiJalan::class);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+//register new user
+Route::post('/register', [AuthController::class, 'registerUser']);
+//login user
+Route::post('/login', [AuthController::class, 'signin']);
+//using middleware
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/profile', function(Request $request) {
+        return auth()->user();
+    });
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
 
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
