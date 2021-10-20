@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ApiAduan;
 use App\Http\Controllers\AuthController;
-use App\Models\User;
 
 Route::resource('aduan', ApiAduan::class);
 
@@ -24,7 +23,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
-Route::get('/user', function () {
-    $users = User::all();
-        return response()->json($users);
-});
+Route::get('/user', [AuthController::class, 'getUser']);
