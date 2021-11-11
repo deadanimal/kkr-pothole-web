@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aduan;
+use App\Models\Gambar;
 use Illuminate\Http\Request;
 
 class ApiAduan extends Controller
@@ -64,6 +65,8 @@ class ApiAduan extends Controller
     public function destroy(Aduan $aduan)
     {
         $aduan->delete();
+        $gambar = Gambar::where('id',$aduan->gambar_id)->first();
+        $gambar->delete();
         return response()->json($aduan);
     }
 }

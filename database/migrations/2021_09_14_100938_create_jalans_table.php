@@ -25,6 +25,7 @@ class CreateJalansTable extends Migration
             $table->string('daerah')->nullable();
             $table->string('negeri')->nullable();
             $table->string('poskod')->nullable();
+            $table->foreignId('gambar_id')->nullable();
             $table->foreignId('admin_id')->nullable();
             $table->foreignId('created_by')->nullable();
             $table->foreignId('modified_by')->nullable();

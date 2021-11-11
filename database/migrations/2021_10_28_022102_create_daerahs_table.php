@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGambarsTable extends Migration
+class CreateDaerahsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateGambarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gambars', function (Blueprint $table) {
+        Schema::create('daerahs', function (Blueprint $table) {
             $table->id();
-            $table->text('url')->nullable();
-            $table->string('filename')->nullable();
-            // $table->string('gambarable_type');
+            $table->string('kod_daerah');
+            $table->string('nama_daerah');
+            $table->string('jkr_daerah')->nullable();
+            $table->foreignId('negeri_id');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateGambarsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gambars');
+        Schema::dropIfExists('daerahs');
     }
 }

@@ -1,0 +1,126 @@
+koad_daerah,nama_daerah,jkr_daerah,negeri_id
+101,BATU PAHAT,JKR Daerah Batu Pahat,1
+102,JOHOR BAHRU,JKR Daerah Johor Bahru,1
+103,KLUANG,JKR Daerah Kluang,1
+104,KOTA TINGGI,JKR Daerah Kota Tinggi,1
+105,MERSING,JKR Daerah Mersing,1
+106,MUAR,JKR Daerah Muar,1
+107,PONTIAN,JKR Daerah Pontian,1
+108,SEGAMAT,JKR Daerah Segamat,1
+121,KULAI,JKR Daerah Kulai,1
+122,TANGKAK,JKR Daerah Tangkak,1
+201,KOTA SETAR,JKR Daerah Kota Setar,2
+202,KUBANG PASU,JKR Daerah Kubang Pasu,2
+203,PADANG TERAP,JKR Daerah Padang Terap/Pokok Sena,2
+204,LANGKAWI,JKR Daerah Langkawi,2
+205,KUALA MUDA,JKR Daerah Kuala Muda,2
+206,YAN,JKR Daerah Yan,2
+207,SIK,JKR Daerah Sik,2
+208,BALING,JKR Daerah Baling,2
+209,KULIM,JKR Daerah Kulim,2
+210,BANDAR BAHARU,JKR Daerah Kulim,2
+211,PENDANG,JKR Daerah Pendang,2
+212,POKOK SENA,JKR Daerah Padang Terap/Pokok Sena,2
+301,BACHOK,JKR Jajahan Bachok,3
+302,KOTA BHARU,JKR Jajahan Kota Bharu,3
+303,MACHANG,JKR Jajahan Machang,3
+304,PASIR MAS,JKR Jajahan Pasir Mas,3
+305,PASIR PUTEH,JKR Jajahan Pasir Putih,3
+306,TANAH MERAH,JKR Jajahan Tanah Merah,3
+307,TUMPAT,JKR Jajahan Tumpat,3
+308,GUA MUSANG,JKR Jajahan Gua Musang,3
+310,KUALA KRAI,JKR Jajahan Kuala Krai,3
+311,JELI,JKR Jajahan Jeli,3
+312,KECIL LOJING,JKR Jajahan Gua Musang,3
+401,MELAKA TENGAH,JKR Daerah Melaka Tengah,4
+402,JASIN,JKR Daerah Jasin,4
+403,ALOR GAJAH,JKR Daerah Alor Gajah,4
+501,JELEBU,JKR Daerah Jelebu,5
+502,KUALA PILAH,JKR Daerah Kuala Pilah,5
+503,PORT DICKSON,JKR Daerah Port Dickson,5
+504,REMBAU,JKR Daerah Rembau,5
+505,SEREMBAN,JKR Daerah Seremban,5
+506,TAMPIN,JKR Daerah Tampin,5
+507,JEMPOL,JKR Daerah Jempol,5
+601,BENTONG,JKR Daerah Bentong,6
+602,CAMERON HIGHLANDS,JKR Daerah Cameron Highland,6
+603,JERANTUT,JKR Daerah Jerantut,6
+604,KUANTAN,JKR Daerah Kuantan,6
+605,LIPIS,JKR Daerah Lipis,6
+606,PEKAN,JKR Daerah Pekan,6
+607,RAUB,JKR Daerah Raub,6
+608,TEMERLOH,JKR Daerah Rompin,6
+609,ROMPIN,JKR Daerah Temerloh,6
+610,MARAN,JKR Daerah Maran,6
+611,BERA,JKR Daerah Bera,6
+701,SEBERANG PERAI TENGAH,JKR Daerah Seberang Prai Tengah,7
+702,SEBERANG PERAI UTARA,JKR Daerah Seberang Prai Utara,7
+703,SEBERANG PERAI SELATAN,JKR Daerah Seberang Prai Selatan,7
+704,TIMOR LAUT,JKR Daerah Timur Laut,7
+705,BARAT DAYA,JKR Daerah Barat Daya,7
+801,BATANG PADANG,JKR Daerah Batang Padang,8
+802,MANJUNG,JKR Daerah Manjung,8
+803,KINTA,JKR Daerah Kinta,8
+804,KERIAN,JKR Daerah Kerian,8
+805,KUALA KANGSAR,JKR Daerah Kuala Kangsar,8
+806,LARUT & MATANG,JKR Daerah Larut Matang & Selama,8
+807,HILIR PERAK,JKR Daerah Hilir Perak,8
+808,HULU PERAK,JKR Daerah Hulu Perak (Grik),8
+809,SELAMA,JKR Daerah Selama,8
+810,PERAK TENGAH,JKR Daerah Perak Tengah,8
+811,KAMPAR,JKR Daerah Kampar,8
+812,BAGAN DATUK,JKR Daerah Bagan Datuk,8
+813,MUALLIM,JKR Daerah Muallim,8
+1001,Klang,JKR Daerah Klang,10
+1002,Kuala Langat,JKR Daerah Kuala Langat,10
+1004,Kuala Selangor,JKR Daerah Kuala Selangor,10
+1005,Sabak Bernam,JKR Daerah Sabak Bernam,10
+1006,Ulu Langat,JKR Daerah Hulu Langat,10
+1007,Ulu Selangor,JKR Daerah Hulu Selangor,10
+1008,Petaling,JKR Daerah Petaling,10
+1009,Gombak,JKR Daerah Gombak,10
+1010,Sepang,JKR Daerah Sepang,10
+1101,BESUT,JKR Daerah Besut,11
+1102,DUNGUN,JKR Daerah Dungun,11
+1103,KEMAMAN,JKR Daerah Kemaman,11
+1104,KUALA TERENGGANU,JKR Daerah Kuala Terengganu,11
+1105,HULU TERENGGANU,JKR Daerah Hulu Terengganu,11
+1106,MARANG,JKR Daerah Marang,11
+1107,SETIU,JKR Daerah Setiu,11
+1108,KUALA NERUS,JKR Daerah Kuala Terengganu,11
+1201,KOTA KINABALU,,12
+1202,PAPAR,,12
+1203,KOTA BELUD,,12
+1204,TUARAN,,12
+1205,KUDAT,,12
+1206,RANAU,,12
+1207,SANDAKAN,,12
+1208,LABUK & SUGUT,,12
+1209,KINABATANGAN,,12
+1210,TAWAU,,12
+1211,LAHAD DATU,,12
+1212,SEMPORNA,,12
+1213,KENINGAU,,12
+1214,TAMBUNAN,,12
+1215,PENSIANGAN,,12
+1216,TENOM,,12
+1217,BEAUFORT,,12
+1218,KUALA PENYU,,12
+1219,SIPITANG,,12
+1221,PENAMPANG,,12
+1222,KOTA MARUDU,,12
+1223,PITAS,,12
+1224,KUNAK,,12
+1225,TONGOD,,12
+1226,PUTATAN,,12
+1301,Kuching,,13
+1302,Sri Aman,,13
+1303,Sibu,,13
+1304,Miri,,13
+1305,Limbang,,13
+1306,Sarikei,,13
+1307,Kapit,,13
+1308,Samarahan,,13
+1309,Bintulu,,13
+1310,Mukah,,13
+1311,Betong,,13

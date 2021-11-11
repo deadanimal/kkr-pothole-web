@@ -25,23 +25,23 @@ class JalanController extends Controller
         return $jalan;
     }
 
-    public function show(Aduan $aduan)
+    public function show(Jalan $jalan)
     {
         return $jalan;
     }
 
-    public function edit(Aduan $aduan)
+    public function edit(Jalan $jalan)
     {
         //
     }
 
-    public function update(Request $request, Aduan $aduan)
+    public function update(Request $request, Jalan $jalan)
     {
         $jalan->save();
         return $jalan;
     }
 
-    public function destroy(Aduan $aduan)
+    public function destroy(Jalan $jalan)
     {
         //
     }

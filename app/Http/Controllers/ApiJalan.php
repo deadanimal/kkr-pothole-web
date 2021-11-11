@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jalan;
+use App\Models\Negeri;
 use Illuminate\Http\Request;
 
 class ApiJalan extends Controller
@@ -24,11 +25,13 @@ class ApiJalan extends Controller
         $jalan->name = $request->name;
         $jalan->detail = $request->detail;
         $jalan->start_date = $request->start_date;
-        $jalan->start_date = $request->start_date;
+        $jalan->end_date = $request->end_date;
         $jalan->response_party = $request->response_party;
         $jalan->alamat = $request->alamat;
         $jalan->daerah = $request->daerah;
-        $jalan->negeri = $request->negeri;
+
+        $selected_negeri = Negeri::where('id',$request->negeri)->first();
+        $jalan->negeri = $selected_negeri->nama_negeri;
         $jalan->poskod = $request->poskod;
         $jalan->status = $request->status;
         $jalan->admin_id = $request->admin_id;
@@ -52,7 +55,7 @@ class ApiJalan extends Controller
         $jalan->name = $request->name;
         $jalan->detail = $request->detail;
         $jalan->start_date = $request->start_date;
-        $jalan->start_date = $request->start_date;
+        $jalan->end_date = $request->end_date;
         $jalan->response_party = $request->response_party;
         $jalan->alamat = $request->alamat;
         $jalan->daerah = $request->daerah;

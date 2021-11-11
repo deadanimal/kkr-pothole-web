@@ -16,12 +16,15 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('doc_type')->nullable();
+            $table->string('doc_no')->nullable();
             $table->string('telefon')->nullable();
             $table->string('email')->unique();
             $table->enum('role', ['pengadu', 'admin', 'super_admin'])->default('pengadu');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->foreignId('organisasi_id')->nullable();
+            $table->string('organisasi')->nullable();
+            $table->string('jawatan')->nullable();
             $table->foreignId('created_by')->nullable();
             $table->foreignId('modified_by')->nullable();
             $table->rememberToken()->nullable();

@@ -7,38 +7,21 @@ use Illuminate\Http\Request;
 
 class GambarController extends Controller
 {
-    public function index()
+    //File Upload Function
+public function uploadimage(Request $request)
     {
-        //
+
+    $img = new Gambar();
+    $img->url = $request['img'];
+    $img->filename = $request['filename'];
+    $img->save();
+
+    return ['success' => true,
+            'gambar_id'=> $img->id];
+
     }
 
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Gambar $gambar)
-    {
-        //
-    }
-
-    public function edit(Gambar $gambar)
-    {
-        //
-    }
-
-    public function update(Request $request, Gambar $gambar)
-    {
-        //
-    }
-
-    public function destroy(Gambar $gambar)
-    {
-        //
+    public function show(Gambar $gambar){
+        return $gambar;
     }
 }

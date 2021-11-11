@@ -4,61 +4,113 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class AuthController extends Controller
 {
-    public function getUser(){
+    public function index()
+    {
         $users = User::all();
         return response()->json($users);
     }
 
-    public function registerUser(Request $request)
+    public function register_user(Request $request)
     {
-        $attr = $request->validate([
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email',
-            'password' => 'required|string|min:6'
-            // 'name' => 'required|string|max:255',
-            // 'email' => 'required|string|email|unique:users,email',
-            // 'password' => 'required|string|min:6|confirmed'
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
         ]);
 
         $user = User::create([
-            'name' => $attr['name'],
-            'password' => bcrypt($attr['password']),
-            'email' => $attr['email']
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+            'telefon' => $request->telefon,
+            'doc_no' => $request->doc_no,
+            'doc_type' => $request->doc_type,
         ]);
 
-        return $this->success([
-            'token' => $user->createToken('tokens')->plainTextToken
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+        ]);
+    }
+    public function register_admin(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+        ]);
+
+        $role = 'admin';
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make('password'),
+            'telefon' => $request->telefon,
+            'doc_no' => $request->doc_no,
+            'doc_type' => $request->doc_type,
+            'organisasi' => $request->organisasi,
+            'jawatan' => $request->jawatan,
+            'role' => $request->role,
+        ]);
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'Bearer',
         ]);
     }
 
-      //use this method to signin users
-      public function login(Request $request)
-      {
-          $attr = $request->validate([
-              'email' => 'required|string|email|',
-              'password' => 'required|string|min:6'
-          ]);
+    //use this method to signin users
+    public function login(Request $request)
+    {
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return response()->json(
+                [
+                    'message' => 'Invalid login details',
+                ],
+                401,
+            );
+        }
 
-          if (!Auth::attempt($attr)) {
-              return $this->error('Credentials not match', 401);
-          }
+        $user = User::where('email', $request['email'])->firstOrFail();
 
-          return $this->success([
-              'token' => auth()->user()->createToken('API Token')->plainTextToken
-          ]);
-      }
+        $token = $user->createToken('auth_token')->plainTextToken;
 
-      // this method signs out users by removing tokens
-      public function logout()
-      {
-          auth()->user()->tokens()->delete();
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'data' => $user
+        ]);
+    }
 
-          return [
-              'message' => 'Tokens Revoked'
-          ];
-      }
+    // this method signs out users by removing tokens
+    public function logout()
+    {
+        auth()
+            ->user()
+            ->tokens()
+            ->delete();
+
+        return [
+            'message' => 'Tokens Revoked',
+        ];
+    }
+
+    public function get_auth_user(Request $request)
+    {
+        //dd($request->bearer_token);
+        $token_from_fe = $request->bearer_token;
+        $token = PersonalAccessToken::findToken($token_from_fe);
+        $user = $token->tokenable;
+
+        return response()->json($user);
+    }
 }
