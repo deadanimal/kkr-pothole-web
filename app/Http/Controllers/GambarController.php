@@ -7,8 +7,14 @@ use Illuminate\Http\Request;
 
 class GambarController extends Controller
 {
+
+    public function index()
+    {
+        $gambar = Gambar::all();
+        return response()->json($gambar);
+    }
     //File Upload Function
-public function uploadimage(Request $request)
+    public function uploadimage(Request $request)
     {
 
     $img = new Gambar();

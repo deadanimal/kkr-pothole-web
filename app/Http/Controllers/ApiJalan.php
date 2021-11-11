@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jalan;
+use App\Models\Gambar;
 use App\Models\Negeri;
 use Illuminate\Http\Request;
 
@@ -71,6 +72,8 @@ class ApiJalan extends Controller
     public function destroy(Jalan $jalan)
     {
         $jalan->delete();
+        $gambar = Gambar::where('id',$jalan->gambar_id)->first();
+        $gambar->delete();
         return response()->json($jalan);
     }
 }
