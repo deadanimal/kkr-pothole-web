@@ -36,6 +36,7 @@ class ApiJalan extends Controller
         $jalan->poskod = $request->poskod;
         $jalan->status = $request->status;
         $jalan->admin_id = $request->admin_id;
+        $jalan->gambar_id = $request->gambar_id;
         $jalan->save();
 
         return response()->json($jalan);
