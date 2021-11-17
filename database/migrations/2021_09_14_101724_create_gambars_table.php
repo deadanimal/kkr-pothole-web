@@ -15,7 +15,7 @@ class CreateGambarsTable extends Migration
     {
         Schema::create('gambars', function (Blueprint $table) {
             $table->id();
-            $table->text('url')->nullable();
+            $table->longText('url')->nullable();
             $table->string('filename')->nullable();
             // $table->string('gambarable_type');
             $table->timestamps();
