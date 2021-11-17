@@ -31,8 +31,11 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::post('/auth/user', [AuthController::class, 'get_auth_user']);
 Route::get('/user/admin', [ApiUser::class, 'admin_show']);
 Route::get('/user/superadmin', [ApiUser::class, 'superadmin_show']);
-Route::get('getdaerah/{id}', [DaerahController::class, 'getDaerah']);
-Route::post('get_jkr', [DaerahController::class, 'getJKR']);
+Route::get('getdaerah/{id}', [DaerahController::class, 'get_daerah']);
+Route::post('get_jkr', [DaerahController::class, 'get_jkr']);
+
+Route::post('/get_pbt', [ApiAduan::class, 'get_pbt']);
+Route::post('/get_status_sispaa', [ApiAduan::class, 'get_status_sispaa']);
 
 Route::resource('aduan', ApiAduan::class);
 Route::resource('jalan', ApiJalan::class);

@@ -22,18 +22,29 @@ class UserSeeder extends Seeder
             'email' => 'adminjalan1@email.com',
             'password' => Hash::make('password'),
             'role' => 'admin',
+            'doc_type' => 'NRIC',
+            'doc_no' => '888888888888',
+            'organisasi' => 'JKR',
+            'jawatan' => 'Pengawai',
         ]);
         User::create([
             'name' => 'Super Admin 1',
             'email' => 'superadmin1@email.com',
             'password' => Hash::make('password'),
             'role' => 'super_admin',
+            'doc_type' => 'NRIC',
+            'doc_no' => '888888888888',
+            'organisasi' => 'JKR',
+            'jawatan' => 'Pengawai',
         ]);
         User::create([
             'name' => 'Pengadu 1',
             'email' => 'pengadu1@email.com',
             'password' => Hash::make('password'),
             'role' => 'pengadu',
+            'doc_type' => 'NRIC',
+            'doc_no' => '888888888888',
+            'organisasi' => 'ABC Sdn Bhd',
         ]);
     }
 }

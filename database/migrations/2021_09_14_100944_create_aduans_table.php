@@ -20,6 +20,7 @@ class CreateAduansTable extends Migration
             $table->string('latitud')->nullable();
             $table->string('langitud')->nullable();
             $table->string('address')->nullable();
+            $table->string('response_party')->nullable();
             $table->string('nama_jalan')->nullable();
             $table->string('pbt_code')->nullable();
             $table->string('complaint_type')->nullable();
