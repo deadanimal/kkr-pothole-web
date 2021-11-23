@@ -17,6 +17,11 @@ class ApiAduan extends Controller
         return response()->json($aduan);
     }
 
+    public function get_aduan_by_user($id){
+        $aduan = Aduan::where('pengadu_id', $id)->get();
+        return response()->json($aduan);
+    }
+
     public function create()
     {
         //
