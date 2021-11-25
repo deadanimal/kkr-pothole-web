@@ -31,8 +31,8 @@ class ApiJalan extends Controller
         $jalan->alamat = $request->alamat;
         $jalan->daerah = $request->daerah;
 
-        $selected_negeri = Negeri::where('id',$request->negeri)->first();
-        $jalan->negeri = $selected_negeri->nama_negeri;
+        // $selected_negeri = Negeri::where('id',$request->negeri)->first();
+        $jalan->negeri = $request->negeri;
         $jalan->poskod = $request->poskod;
         $jalan->status = $request->status;
         $jalan->admin_id = $request->admin_id;
