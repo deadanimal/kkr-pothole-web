@@ -17,6 +17,7 @@ class NegeriController extends Controller
         $negeri = Negeri::all();
 
         return response()->json($negeri);
+        // return $negeri;
     }
 
     /**
