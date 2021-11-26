@@ -43,7 +43,7 @@ class AuthController extends Controller
             'doc_no' => $request->doc_no
         ];
 
-        Mail::to($validatedData['email'])->send(new RegisterVerification($maildata));
+        Mail::to($validatedData['email'])->send(new \App\Mail\RegisterVerification($maildata));
 
         return response()->json([
             'access_token' => $token,

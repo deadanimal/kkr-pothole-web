@@ -26,7 +26,7 @@ Route::get('send-mail', function () {
     //Mail::to($validatedData['email'])->send(new RegisterVerification($user));
     Mail::to('naqib.jai.an@gmail.com')->send(new \App\Mail\RegisterVerification($user));
    
-    dd("Email is Sent.");
+    //dd("Email is Sent.");
 });
 
 require __DIR__.'/auth.php';
