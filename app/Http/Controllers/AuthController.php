@@ -35,10 +35,15 @@ class AuthController extends Controller
             'doc_no' => $request->doc_no,
             'doc_type' => $request->doc_type,
         ]);
-
+        
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        Mail::to($validatedData['email'])->send(new RegisterVerification($user));
+        $maildata = [
+            'name' => $validatedData['email'],
+            'doc_no' => $request->doc_no
+        ];
+
+        Mail::to($validatedData['email'])->send(new RegisterVerification($maildata));
 
         return response()->json([
             'access_token' => $token,
