@@ -7,6 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+use App\Models\User;
+
 class RegisterVerification extends Mailable
 {
     use Queueable, SerializesModels;
@@ -17,8 +19,9 @@ class RegisterVerification extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct( $user)
     {
+        //dd($user);
         $this->user = $user;
     }
 
@@ -29,10 +32,11 @@ class RegisterVerification extends Mailable
      */
     public function build()
     {
+        //($this->user['name'] );
         return $this->view('email.registeruser')->with([
             // 'jenis_permohonan'=>$this->permohonan->jenis_permohonan,
-            'nama'=>$this->user->name,
-            'no_kp'=>$this->user->doc_no,
+            'name'=>$this->user['name'],
+            'doc_no'=>$this->user['doc_no'],
         ]);
     }
 }
