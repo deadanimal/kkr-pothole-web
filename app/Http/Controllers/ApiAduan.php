@@ -33,9 +33,9 @@ class ApiAduan extends Controller
         $aduan = new Aduan;
         $latestRef = Aduan::orderBy('created_at','DESC')->first();
         if(empty($latestRef)){
-            $aduan->reference_id = 'REF.'.str_pad(1, 7, "0", STR_PAD_LEFT);
+            $aduan->reference_id = 'TST.'.str_pad(1, 7, "0", STR_PAD_LEFT);
         } else {
-            $aduan->reference_id = 'REF.'.str_pad($latestRef->id + 1, 7, "0", STR_PAD_LEFT);
+            $aduan->reference_id = 'TST.'.str_pad($latestRef->id + 1, 7, "0", STR_PAD_LEFT);
         }
         $aduan->title = $request->title;
         $aduan->detail = $request->detail;
@@ -134,16 +134,16 @@ class ApiAduan extends Controller
 
     public function get_status_sispaa(Request $request)
     {
-        $json = json_encode(['sispaa_id' => [$request->sispaa_id]]);
+        $json = ['sispaa_id' => [$request->sispaa_id]];
 
         $res = Http::withHeaders([
-            'Authorization' => 'BPA-KKR-API-TEST',
-            'Content-Type' => 'application/json'
-        ])->get('https://gateway.spab.gov.my/aduan-api/v1/status',
-        ['sispaa_id' => [$request->sispaa_id]]);
+            'Content-Type' => 'application/json',
+            'Authorization' => 'BPA-KKR-API-TEST'
+        ])->get('https://gateway.spab.gov.my/aduan-api/v1/status/',
+        $json);
 
-        // dd($json);
         return $res;
+        // return [$res, $json];
 
         // return response()->json($json);
 
