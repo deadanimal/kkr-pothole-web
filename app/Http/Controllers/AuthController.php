@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use Laravel\Sanctum\PersonalAccessToken;
+
+use App\Mail\RegisterVerification;
 
 class AuthController extends Controller
 {
@@ -32,8 +35,15 @@ class AuthController extends Controller
             'doc_no' => $request->doc_no,
             'doc_type' => $request->doc_type,
         ]);
-
+        
         $token = $user->createToken('auth_token')->plainTextToken;
+
+        $maildata = [
+            'name' => $validatedData['email'],
+            'doc_no' => $request->doc_no
+        ];
+
+        Mail::to($validatedData['email'])->send(new \App\Mail\RegisterVerification($maildata));
 
         return response()->json([
             'access_token' => $token,

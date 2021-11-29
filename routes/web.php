@@ -16,4 +16,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('send-mail', function () {
+   
+    $user = [
+        'name' => 'Mail from ItSolutionStuff.com',
+        'doc_no' => 'This is for testing email using smtp'
+    ];
+
+    //Mail::to($validatedData['email'])->send(new RegisterVerification($user));
+    Mail::to('naqib.jai.an@gmail.com')->send(new \App\Mail\RegisterVerification($user));
+   
+    //dd("Email is Sent.");
+});
+
 require __DIR__.'/auth.php';
