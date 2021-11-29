@@ -75,8 +75,12 @@ class ApiAduan extends Controller
             'complaint_category' => ''
         ]);
 
-        $aduan->sispaa_id = $res['data']['sispaaid'];
-        $aduan->save();
+        if($res){
+
+            $aduan->sispaa_id = $res['data']['sispaaid'];
+            $aduan->save();
+        }
+
 
         return response()->json($aduan);
     }
@@ -142,8 +146,8 @@ class ApiAduan extends Controller
         ])->get('https://gateway.spab.gov.my/aduan-api/v1/status/',
         $json);
 
-        return $res;
-        // return [$res, $json];
+        // return $res['data'];
+        return [$res['data'], $json];
 
         // return response()->json($json);
 

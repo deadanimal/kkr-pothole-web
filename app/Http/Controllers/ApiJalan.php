@@ -30,8 +30,6 @@ class ApiJalan extends Controller
         $jalan->response_party = $request->response_party;
         $jalan->alamat = $request->alamat;
         $jalan->daerah = $request->daerah;
-
-        // $selected_negeri = Negeri::where('id',$request->negeri)->first();
         $jalan->negeri = $request->negeri;
         $jalan->poskod = $request->poskod;
         $jalan->status = $request->status;
@@ -65,6 +63,7 @@ class ApiJalan extends Controller
         $jalan->poskod = $request->poskod;
         $jalan->status = $request->status;
         $jalan->admin_id = $request->admin_id;
+        $jalan->gambar_id = $request->gambar_id;
         $jalan->save();
 
         return response()->json($jalan);
