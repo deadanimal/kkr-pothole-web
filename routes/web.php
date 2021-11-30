@@ -13,6 +13,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/success', function () {
+    return view('success');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
