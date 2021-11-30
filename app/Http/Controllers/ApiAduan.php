@@ -141,7 +141,7 @@ class ApiAduan extends Controller
         $json = ['sispaa_id' => [$request->sispaa_id]];
 
         $res = Http::withHeaders([
-            'Content-Type' => 'application/json',
+            // 'Content-Type' => 'application/json',
             'Authorization' => 'BPA-KKR-API-TEST'
         ])->get('https://gateway.spab.gov.my/aduan-api/v1/status/',
         $json);
