@@ -98,7 +98,7 @@ class AuthController extends Controller
         if($user->email_verified_at == null){
             return response()->json(
                 [
-                    'message' => 'Email belum di aktifkan',
+                    'message' => 'Sila aktifkan akaun anda di email yang didaftarkan',
                 ],
                 405,
             );
