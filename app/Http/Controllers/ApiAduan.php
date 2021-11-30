@@ -33,9 +33,9 @@ class ApiAduan extends Controller
         $aduan = new Aduan;
         $latestRef = Aduan::orderBy('created_at','DESC')->first();
         if(empty($latestRef)){
-            $aduan->reference_id = 'TST.'.str_pad(1, 7, "0", STR_PAD_LEFT);
+            $aduan->reference_id = 'KKRTST.'.str_pad(1, 7, "0", STR_PAD_LEFT);
         } else {
-            $aduan->reference_id = 'TST.'.str_pad($latestRef->id + 1, 7, "0", STR_PAD_LEFT);
+            $aduan->reference_id = 'KKRTST.'.str_pad($latestRef->id + 1, 7, "0", STR_PAD_LEFT);
         }
         $aduan->title = $request->title;
         $aduan->detail = $request->detail;
@@ -76,7 +76,6 @@ class ApiAduan extends Controller
         ]);
 
         if($res){
-
             $aduan->sispaa_id = $res['data']['sispaaid'];
             $aduan->save();
         }
@@ -141,7 +140,7 @@ class ApiAduan extends Controller
         $json = ['sispaa_id' => [$request->sispaa_id]];
 
         $res = Http::withHeaders([
-            'Content-Type' => 'application/json',
+            // 'Content-Type' => 'application/json',
             'Authorization' => 'BPA-KKR-API-TEST'
         ])->get('https://gateway.spab.gov.my/aduan-api/v1/status/',
         $json);

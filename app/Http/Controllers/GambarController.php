@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Gambar;
 use App\Models\Aduan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
 class GambarController extends Controller
 {
@@ -22,23 +21,12 @@ class GambarController extends Controller
     $img = new Gambar();
     $img->url = $request['img'];
     $img->filename = $request['filename'];
-    // $img->save();
+    $img->save();
 
-    // $aduan = Aduan::where('gambar_id',$img->id)->get();
+    $aduan = Aduan::where('gambar_id',$img->id)->get();
 
-    $imgfile = $request->file('file');
-
-    $res = Http::withHeaders([
-        'Authorization' => 'BPA-KKR-API-TEST',
-        // 'Content-Type' => 'multipart/form-data'
-    ])->post('https://gateway.spab.gov.my/aduan-api/v1/attach',
-    [
-        'sispaa_id' => 'TRKKR.800000',
-        'attachment' => $imgfile
-    ]);
-
-
-    return  $res['data'];
+    return ['success' => true,
+            'gambar_id'=> $img->id];
 
     }
 
