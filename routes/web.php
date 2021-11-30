@@ -26,6 +26,11 @@ Route::get('confirm-email/{id}', function ($id) {
     $users = User::where('id',$id)->first();
     $users->email_verified_at = 1;
     $users->save();
+    
+    echo '<script language="javascript">';
+    echo 'alert("Profil Berjaya Di Aktifkan")';
+    echo '</script>';
+    return redirect('/');
 });
 
 Route::get('send-mail', function () {

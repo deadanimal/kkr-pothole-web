@@ -37,6 +37,7 @@ class RegisterVerification extends Mailable
             // 'jenis_permohonan'=>$this->permohonan->jenis_permohonan,
             'name'=>$this->user['name'],
             'doc_no'=>$this->user['doc_no'],
+            'link'=>$this->user['link']
             // 'name'=>$this->user->name,
             // 'doc_no'=>$this->user->doc_no,
         ]);
