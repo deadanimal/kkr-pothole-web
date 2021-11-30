@@ -1,13 +1,13 @@
 kod_negeri,nama_negeri
-01,Johor
-02,Kedah
-03,Kelantan
-04,Melaka
-05,Negeri Sembilan
-06,Pahang
-07,Pulau Pinang
-08,Perak
-09,Perlis
+1,Johor
+2,Kedah
+3,Kelantan
+4,Melaka
+5,Negeri Sembilan
+6,Pahang
+7,Pulau Pinang
+8,Perak
+9,Perlis
 10,Selangor
 11,Terengganu
 12,Sabah
@@ -15,5 +15,3 @@ kod_negeri,nama_negeri
 14,Wilayah Persekutuan Kuala Lumpur
 15,Wilayah Persekutuan Labuan
 16,Wilayah Persekutuan Putrajaya
-17,Luar Negara
-18,

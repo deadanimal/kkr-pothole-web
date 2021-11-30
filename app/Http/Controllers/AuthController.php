@@ -35,7 +35,7 @@ class AuthController extends Controller
             'doc_no' => $request->doc_no,
             'doc_type' => $request->doc_type,
         ]);
-        
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
@@ -75,6 +75,16 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
+        $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
+
+            $maildata = [
+                'name' => $validatedData['name'],
+                'doc_no' => $request->doc_no,
+                'link' => $verifymaillink
+            ];
+
+            Mail::to($validatedData['email'])->send(new \App\Mail\RegisterVerification($maildata));
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'Bearer',
@@ -87,7 +97,7 @@ class AuthController extends Controller
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json(
                 [
-                    'message' => 'Invalid login details',
+                    'message' => 'Sila masukkan emel dan kata laluan yang sah.',
                 ],
                 401,
             );
@@ -98,7 +108,7 @@ class AuthController extends Controller
         if($user->email_verified_at == null){
             return response()->json(
                 [
-                    'message' => 'Sila aktifkan akaun anda di email yang didaftarkan',
+                    'message' => 'Sila aktifkan akaun anda di email yang didaftarkan.',
                 ],
                 405,
             );

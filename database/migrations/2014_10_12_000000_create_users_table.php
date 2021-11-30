@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->string('organisasi')->nullable();
             $table->string('jawatan')->nullable();
+            $table->foreignId('gambar_id')->nullable();
             $table->foreignId('created_by')->nullable();
             $table->foreignId('modified_by')->nullable();
             $table->rememberToken()->nullable();

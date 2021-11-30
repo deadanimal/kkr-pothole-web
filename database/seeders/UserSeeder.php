@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'doc_no' => '888888888888',
             'organisasi' => 'JKR',
             'jawatan' => 'Pengawai',
-            'email_verified_at' => 1
+            'email_verified_at' => "2021-11-30T10:00:41.000000Z"
         ]);
         User::create([
             'name' => 'Super Admin 1',
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
             'doc_no' => '888888888888',
             'organisasi' => 'JKR',
             'jawatan' => 'Pengawai',
-            'email_verified_at' => 1
+            'email_verified_at' => "2021-11-30T10:00:41.000000Z"
         ]);
         User::create([
             'name' => 'Pengadu 1',
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
             'doc_type' => 'NRIC',
             'doc_no' => '888888888888',
             'organisasi' => 'ABC Sdn Bhd',
-            'email_verified_at' => 1
+            'email_verified_at' => "2021-11-30T10:00:41.000000Z"
         ]);
     }
 }
