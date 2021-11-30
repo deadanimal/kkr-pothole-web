@@ -76,7 +76,6 @@ class ApiAduan extends Controller
         ]);
 
         if($res){
-
             $aduan->sispaa_id = $res['data']['sispaaid'];
             $aduan->save();
         }
