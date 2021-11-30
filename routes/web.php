@@ -22,8 +22,8 @@ Route::get('user', function () {
     return response()->json($users);
 });
 
-Route::get('confirm-email', function () {
-    $users = User::where('id',5)->first();
+Route::get('confirm-email/{id}', function ($id) {
+    $users = User::where('id',$id)->first();
     $users->email_verified_at = 1;
     $users->save();
 });
