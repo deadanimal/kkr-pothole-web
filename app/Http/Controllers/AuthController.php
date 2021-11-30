@@ -60,7 +60,6 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
         ]);
 
-        $role = 'admin';
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],

@@ -27,6 +27,7 @@ class User extends Authenticatable
         'jawatan',
         'doc_type',
         'doc_no',
+        'gambar_id'
     ];
 
     /**
