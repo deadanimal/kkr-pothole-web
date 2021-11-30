@@ -23,7 +23,9 @@ Route::get('user', function () {
 });
 
 Route::get('confirm-email', function () {
-    
+    $users = User::where('id',5)->first();
+    $users->email_verified_at = 1;
+    $users->save();
 });
 
 Route::get('send-mail', function () {
