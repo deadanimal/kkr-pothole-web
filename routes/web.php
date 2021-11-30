@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set("Asia/Kuala_Lumpur");
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -23,14 +23,15 @@ Route::get('user', function () {
 });
 
 Route::get('confirm-email/{id}', function ($id) {
+    $date = date('Y-m-d H:i:s');
     $users = User::where('id',$id)->first();
-    $users->email_verified_at = 1;
+    $users->email_verified_at = $date;
     $users->save();
     
     echo '<script language="javascript">';
     echo 'alert("Profil Berjaya Di Aktifkan")';
     echo '</script>';
-    return redirect('/');
+    return redirect('success');
 });
 
 Route::get('send-mail', function () {
