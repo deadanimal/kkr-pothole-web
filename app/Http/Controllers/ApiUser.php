@@ -55,6 +55,7 @@ class ApiUser extends Controller
                 'jawatan' => $request->jawatan,
                 'doc_no' => $request->doc_no,
                 'doc_type' => $request->doc_type,
+                'gambar_id' => $request->gambar_id,
                 'password' => Hash::make($request->password)
             ]);
         } else{
@@ -66,6 +67,7 @@ class ApiUser extends Controller
                 'jawatan' => $request->jawatan,
                 'doc_no' => $request->doc_no,
                 'doc_type' => $request->doc_type,
+                'gambar_id' => $request->gambar_id,
             ]);
         }
         return response()->json($user);
