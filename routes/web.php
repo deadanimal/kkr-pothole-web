@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 use App\Http\Controllers\AduanController;
 Route::resource('aduan', AduanController::class);
@@ -15,6 +16,15 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('user', function () {
+    $users = User::all();
+    return response()->json($users);
+});
+
+Route::get('confirm-email', function () {
+    
+});
 
 Route::get('send-mail', function () {
    
