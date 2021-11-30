@@ -95,6 +95,15 @@ class AuthController extends Controller
 
         $user = User::where('email', $request['email'])->firstOrFail();
 
+        if($user->email_verified_at == null){
+            return response()->json(
+                [
+                    'message' => 'Invalid login details',
+                ],
+                401,
+            );
+        }
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
