@@ -71,6 +71,7 @@ class AuthController extends Controller
             'organisasi' => $request->organisasi,
             'jawatan' => $request->jawatan,
             'role' => $request->role,
+            'gambar_id' => $request->gambar_id,
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
