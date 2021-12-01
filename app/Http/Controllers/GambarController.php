@@ -30,6 +30,16 @@ class GambarController extends Controller
 
     }
 
+    public function update(Request $request, Gambar $img){
+        $img->url = $request['img'];
+        $img->filename = $request['filename'];
+        $img->save();
+        return ['success' => true,
+            'gambar_id'=> $img->id];
+
+
+    }
+
     public function show(Gambar $gambar){
         return $gambar;
     }
