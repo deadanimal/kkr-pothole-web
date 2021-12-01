@@ -35,7 +35,8 @@ class GambarController extends Controller
         $gambar->filename = $request->filename;
         $gambar->save();
 
-        return response()->json($gambar);
+        return ['success' => true,
+            'gambar_id'=> $gambar->id];
     }
 
     public function show(Gambar $gambar){

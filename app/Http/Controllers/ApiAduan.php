@@ -139,16 +139,29 @@ class ApiAduan extends Controller
     {
         $json = ['sispaa_id' => [$request->sispaa_id]];
 
-        $res = Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'Authorization' => 'BPA-KKR-API-TEST'
-        ])->get('https://gateway.spab.gov.my/aduan-api/v1/status',
-        $json);
+        $ch = curl_init();
+            $headers = array(
+            // 'Accept: application/json',
+            'Content-Type: application/json',
+            'Authorization: BPA-KKR-API-TEST'
 
-        // return $res['data'];
-        return [$res['data'], $json];
+            );
+            curl_setopt($ch, CURLOPT_URL, 'https://gateway.spab.gov.my/aduan-api/v1/status/');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            $body = json_encode($json);
 
-        // return response()->json($json);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+            curl_setopt($ch, CURLOPT_POSTFIELDS,$body);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+            // Timeout in seconds
+            curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
+            $res = json_decode(curl_exec($ch));
+
+            return $res;
 
     }
+
 }
