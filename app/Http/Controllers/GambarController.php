@@ -17,7 +17,6 @@ class GambarController extends Controller
     //File Upload Function
     public function uploadimage(Request $request)
     {
-
     $img = new Gambar();
     $img->url = $request['img'];
     $img->filename = $request['filename'];
@@ -31,11 +30,12 @@ class GambarController extends Controller
     }
 
     public function update(Request $request, Gambar $img){
-        $img->url = $request['img'];
-        $img->filename = $request['filename'];
+
+        $img->url = $request->img;
+        $img->filename = $request->filename;
         $img->save();
         return ['success' => true,
-            'gambar_id'=> $img->id];
+            'gambar_idd'=> $img->id];
 
 
     }
