@@ -1,15 +1,16 @@
-<h5>Notifikasi Pendaftaran Pengguna</h5> 
+<h5>Notifikasi Tukar Password Pengguna</h5> 
 
 <p>Salam Sejahtera,</p>
 <br>
-<p>Pendaftaran alamat email anda telah berjaya untuk sistem MyPotholes Malaysia. Sila klik pautan untuk melengkapkan pendaftaran.</p>
+<p>Password bagi alamat email anda telah berjaya diubah untuk sistem MyPotholes Malaysia. Sila lihat detail untuk password baru anda.</p>
 <br>
-<a href="{{$link}}">Click Here</a>
 <br>
-<p>Berikut adalah butiran permohonan</p>
+<p>Berikut adalah butiran pengguna</p>
 <br>
 <p>Nama : {{ $name }}</p>
 <p>ID Pengguna : {{$doc_no}}</p>
+<br>
+<b><p>Password Sementara : {{$password}}</p></b>
 <br>
 <br>
 <p><strong>Sistem MyPotholes Malaysia</strong></p>

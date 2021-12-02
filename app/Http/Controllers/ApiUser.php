@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\PersonalAccessToken;
 
+use App\Mail\ForgotPassword;
+
 class ApiUser extends Controller
 {
     public function index()
@@ -80,7 +82,29 @@ class ApiUser extends Controller
     }
 
     public function forgot_user(Request $request){
-        $users = User::all();
-        return response()->json($request);
+        
+        $user = User::where('email',$request->email)->first();
+        if($user != null) {
+            $defpassword = "MyPotHoles".$fourRandom;
+            
+            $maildata = [
+                'name' => $user->name,
+                'doc_no' => $user->doc_no,
+                'password' => $defpassword
+            ];
+    
+            Mail::to($request->email)->send(new \App\Mail\ForgotPassword($maildata));
+
+            $fourRandom = rand(1000,9999);
+            $user->password = Hash::make($defpassword);
+            $user->save();
+            $response = "Sila periksa email anda untuk mendapatkan kata laluan";
+            
+        }else{
+            $response = "Email tiada dalam pengkalan data ahli berdaftar. Sila cuba lagi.";
+        }
+        
+        return response()->$response;
+        
     }
 }
