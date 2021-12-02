@@ -165,9 +165,18 @@ class ApiAduan extends Controller
             // Timeout in seconds
             curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 
-            $res = json_decode(curl_exec($ch));
+            $resp = json_decode(curl_exec($ch));
+            $res = $resp->data->result[0];
+            if($res->response_code == 200){
 
-            return $res;
+                $aduan = Aduan::where('sispaa_id',$res->sispaa_id)->update([
+                    'status_code' => $res->status_code,
+                    'status_desc' => $res->status_desc,
+                    'nota' => $res->notes,
+                ]);
+            }
+
+            return $aduan;
 
     }
 
