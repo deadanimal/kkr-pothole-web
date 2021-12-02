@@ -85,6 +85,7 @@ class ApiUser extends Controller
         
         $user = User::where('email',$request->email)->first();
         if($user != null) {
+            $fourRandom = rand(1000,9999);
             $defpassword = "MyPotHoles".$fourRandom;
 
             $maildata = [
@@ -95,7 +96,6 @@ class ApiUser extends Controller
     
             Mail::to($request->email)->send(new \App\Mail\ForgotPassword($maildata));
 
-            $fourRandom = rand(1000,9999);
             $user->password = Hash::make($defpassword);
             $user->save();
             $response = "Sila periksa email anda untuk mendapatkan kata laluan";
