@@ -86,7 +86,7 @@ class ApiUser extends Controller
         $user = User::where('email',$request->email)->first();
         if($user != null) {
             $defpassword = "MyPotHoles".$fourRandom;
-            
+
             $maildata = [
                 'name' => $user->name,
                 'doc_no' => $user->doc_no,
@@ -104,7 +104,7 @@ class ApiUser extends Controller
             $response = "Email tiada dalam pengkalan data ahli berdaftar. Sila cuba lagi.";
         }
         
-        return response()->$response;
+        return response()->json(['message' => $response]);
         
     }
 }
