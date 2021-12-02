@@ -33,9 +33,9 @@ class ApiAduan extends Controller
         $aduan = new Aduan;
         $latestRef = Aduan::orderBy('created_at','DESC')->first();
         if(empty($latestRef)){
-            $aduan->reference_id = 'POTST.'.str_pad(1, 7, "0", STR_PAD_LEFT);
+            $aduan->reference_id = 'KKRPOT.'.str_pad(1, 7, "0", STR_PAD_LEFT);
         } else {
-            $aduan->reference_id = 'POTST.'.str_pad($latestRef->id + 1, 7, "0", STR_PAD_LEFT);
+            $aduan->reference_id = 'KKRPOT.'.str_pad($latestRef->id + 1, 7, "0", STR_PAD_LEFT);
         }
         $aduan->title = $request->title;
         $aduan->detail = $request->detail;
@@ -75,13 +75,15 @@ class ApiAduan extends Controller
             'complaint_category' => ''
         ]);
 
-        if($res['data']){
+
+        // return[$res['data'], $aduan, $user];
+
+        if($res['data']['status'] === 200){
             $aduan->sispaa_id = $res['data']['sispaaid'];
             $aduan->save();
-
-
-        return response()->json($aduan);
-        } else {
+            return ['success' => true,
+            $aduan];
+        } else if($res['data']['status'] === 409){
             return ['failed' => true,
             $aduan];
         }
