@@ -46,4 +46,5 @@ Route::resource('negeri', NegeriController::class);
 Route::resource('daerah', DaerahController::class);
 Route::resource('gambar', GambarController::class);
 
-Route::post('/upload_image', [GambarController::class, 'uploadimage']);
+Route::post('/upload_image', [GambarController::class, 'upload_image']);
+Route::post('/sispaa_attach', [GambarController::class, 'sispaa_attach']);
