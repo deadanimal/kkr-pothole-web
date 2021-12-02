@@ -81,6 +81,6 @@ class ApiUser extends Controller
 
     public function forgot_user(Request $request){
         $users = User::all();
-        return response()->json($users);
+        return response()->json($request);
     }
 }
