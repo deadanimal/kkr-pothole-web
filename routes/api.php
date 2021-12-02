@@ -47,3 +47,5 @@ Route::resource('daerah', DaerahController::class);
 Route::resource('gambar', GambarController::class);
 
 Route::post('/upload_image', [GambarController::class, 'uploadimage']);
+
+Route::get('/user/forgot', [ApiUser::class, 'forgot_user']);
