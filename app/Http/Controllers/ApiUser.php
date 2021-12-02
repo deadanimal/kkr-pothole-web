@@ -98,7 +98,7 @@ class ApiUser extends Controller
 
             $user->password = Hash::make($defpassword);
             $user->save();
-            $response = "Sila periksa email anda untuk mendapatkan kata laluan";
+            $response = 1;
             
         }else{
             $response = "Email tiada dalam pengkalan data ahli berdaftar. Sila cuba lagi.";
