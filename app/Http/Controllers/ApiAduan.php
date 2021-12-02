@@ -75,13 +75,18 @@ class ApiAduan extends Controller
             'complaint_category' => ''
         ]);
 
-        if($res){
+        if($res['data']){
             $aduan->sispaa_id = $res['data']['sispaaid'];
             $aduan->save();
-        }
 
 
         return response()->json($aduan);
+        } else {
+            return ['failed' => true,
+            $aduan];
+        }
+
+
     }
 
     public function show(Aduan $aduan)
