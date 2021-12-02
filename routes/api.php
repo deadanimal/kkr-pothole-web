@@ -48,3 +48,5 @@ Route::resource('gambar', GambarController::class);
 
 Route::post('/upload_image', [GambarController::class, 'upload_image']);
 Route::post('/sispaa_attach', [GambarController::class, 'sispaa_attach']);
+
+Route::post('/user/forgot', [ApiUser::class, 'forgot_user']);
