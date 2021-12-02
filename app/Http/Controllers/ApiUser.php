@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\PersonalAccessToken;
-
+use Illuminate\Support\Facades\Mail;
 use App\Mail\ForgotPassword;
 
 class ApiUser extends Controller
