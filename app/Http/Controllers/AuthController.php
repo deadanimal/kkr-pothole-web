@@ -21,13 +21,13 @@ class AuthController extends Controller
 
     public function register_user(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'string|min:8',
-        ]);
+        // $validatedData = $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|string|email|max:255|unique:users',
+        //     'password' => 'string|min:8',
+        // ]);
 
-        $checkemail = User::where('email',$validatedData['email'])->first();
+        $checkemail = User::where('email',$request->email)->first();
         if($checkemail != null) {
             $checkdoc = User::where('doc_no',$request->doc_no)->first();
             if($checkdoc != null) {
@@ -38,9 +38,9 @@ class AuthController extends Controller
         }
 
         $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
             'telefon' => $request->telefon,
             'doc_no' => $request->doc_no,
             'doc_type' => $request->doc_type,
