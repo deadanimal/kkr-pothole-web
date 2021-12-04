@@ -28,9 +28,9 @@ class AuthController extends Controller
         // ]);
 
         $checkemail = User::where('email',$request->email)->first();
-        if($checkemail != null) {
+        if($checkemail == null) {
             $checkdoc = User::where('doc_no',$request->doc_no)->first();
-            if($checkdoc != null) {
+            if($checkdoc == null) {
                 return response()->json(['message' => "faildoc"]);
             }
         }else{
