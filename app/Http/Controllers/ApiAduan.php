@@ -18,7 +18,11 @@ class ApiAduan extends Controller
     }
 
     public function get_aduan_by_user($id){
+
         $aduan = Aduan::where('pengadu_id', $id)->get();
+        foreach ($aduan as $ad) {
+            $this->get_status_sispaa($ad->sispaa_id);
+        }
         return response()->json($aduan);
     }
 
@@ -33,9 +37,9 @@ class ApiAduan extends Controller
         $aduan = new Aduan;
         $latestRef = Aduan::orderBy('created_at','DESC')->first();
         if(empty($latestRef)){
-            $aduan->reference_id = 'KKRPOT.'.str_pad(1, 7, "0", STR_PAD_LEFT);
+            $aduan->reference_id = 'KKRPOTS.'.str_pad(1, 7, "0", STR_PAD_LEFT);
         } else {
-            $aduan->reference_id = 'KKRPOT.'.str_pad($latestRef->id + 1, 7, "0", STR_PAD_LEFT);
+            $aduan->reference_id = 'KKRPOTS.'.str_pad($latestRef->id + 1, 7, "0", STR_PAD_LEFT);
         }
         $aduan->title = $request->title;
         $aduan->detail = $request->detail;
@@ -106,13 +110,17 @@ class ApiAduan extends Controller
     {
         $aduan->title = $request->title;
         $aduan->detail = $request->detail;
-        $aduan->kategori_jalan = $request->kategori_jalan;
-        $aduan->gambar_id = $request->gambar_id;
         $aduan->latitud = $request->latitud;
         $aduan->langitud = $request->langitud;
-        $aduan->daerah = $request->daerah;
-        $aduan->negeri = $request->negeri;
-        $aduan->pengadu_id = $request->pengadu_id;
+        $aduan->address = $request->address;
+        $aduan->response_party = $request->response_party;
+        $aduan->nama_jalan = $request->nama_jalan;
+        $aduan->pbt_code = $request->pbt_code;
+        $aduan->complaint_type = $request->complaint_type;
+        $aduan->complaint_category = $request->complaint_category;
+        $aduan->complaint_category_code = $request->complaint_category_code;
+        $aduan->status_code = $request->status_code;
+        $aduan->status_desc = $request->status_desc;
         $aduan->save();
 
         return response()->json($aduan);
@@ -142,9 +150,9 @@ class ApiAduan extends Controller
 
     }
 
-    public function get_status_sispaa(Request $request)
+    public function get_status_sispaa($val)
     {
-        $json = ['sispaa_id' => [$request->sispaa_id]];
+        $json = ['sispaa_id' => [$val]];
 
         $ch = curl_init();
             $headers = array(

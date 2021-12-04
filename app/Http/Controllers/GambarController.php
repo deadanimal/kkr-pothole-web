@@ -50,35 +50,4 @@ class GambarController extends Controller
         return $gambar;
     }
 
-    public function sispaa_attach(Request $request){
-        $ch = curl_init();
-        $dir = $request->file('file')->store('test');
-
-        $json = ['sispaa_id' => 'TRKKR.800116','attachment' => 'http://127.0.0.1:8000/storage/'.$dir];
-
-        $body = array('sispaa_id' => 'TRKKR.800116','attachment'=> new CURLFILE($dir));
-        $headers = array(
-        // 'Accept: application/json',
-        // 'Content-Type: multipart/form-data',
-        'Authorization: BPA-KKR-API-TEST');
-
-        curl_setopt($ch, CURLOPT_URL, 'https://gateway.spab.gov.my/aduan-api/v1/attach/');
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_ENCODING, '');
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
-        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-
-        // Timeout in seconds
-        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
-        // dd($test);
-
-        $res = json_decode(curl_exec($ch));
-        return [$res, $dir];
-    }
 }
