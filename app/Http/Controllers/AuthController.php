@@ -27,6 +27,16 @@ class AuthController extends Controller
             'password' => 'string|min:8',
         ]);
 
+        $checkemail = User::where('email',$validatedData['email'])->first();
+        if($checkemail != null) {
+            $checkdoc = User::where('doc_no',$request->doc_no)->first();
+            if($checkdoc != null) {
+                return response()->json(['message' => "faildoc"]);
+            }
+        }else{
+            return response()->json(['message' => "failemail"]);
+        }
+
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
@@ -51,6 +61,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'Bearer',
+            'message' => 'success'
         ]);
     }
     public function register_admin(Request $request)
