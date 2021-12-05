@@ -181,7 +181,6 @@ class ApiAduan extends Controller
                     'status_code' => $res->status_code,
                     'status_desc' => $res->status_desc,
                     'nota' => $res->notes,
-                    'last_update' => $res->last_update
                 ]);
             }
 
