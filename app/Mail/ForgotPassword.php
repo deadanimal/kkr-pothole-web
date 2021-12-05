@@ -34,7 +34,7 @@ class ForgotPassword extends Mailable
     {
         return $this->view('email.forgotpassword')->with([
             'name'=>$this->user['name'],
-            'doc_no'=>$this->user['doc_no'],
+            'email'=>$this->user['email'],
             'password'=>$this->user['password']
         ]);
     }
