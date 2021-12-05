@@ -124,6 +124,7 @@ koad_daerah,nama_daerah,jkr_daerah,negeri_id
 1309,Bintulu,,13
 1310,Mukah,,13
 1311,Betong,,13
-,WP,JKR Wilayah Persekutuan Kuala Lumpur,14
-,WP,JKR Wilayah Persekutuan Labuan,15
-,WP,JKR Wilayah Persekutuan Putrajaya,16
+0,WPKL,JKR Kuala Lumpur,14
+0,WPL,JKR Labuan,15
+0,WPP,JKR Putrajaya,16
+0,Perlis,JKR Perlis,9

@@ -31,11 +31,11 @@ class CreateAduansTable extends Migration
             $table->string('status_desc')->nullable();
             $table->string('sispaa_id')->nullable();
             $table->text('nota')->nullable();
-            $table->foreignId('gambar_id')->nullable();
+            $table->string('gambar_id')->nullable();
             $table->foreignId('pengadu_id')->nullable();
             $table->string('response_code')->nullable();
-            $table->foreignId('created_by')->nullable();
-            $table->foreignId('modified_by')->nullable();
+            $table->timestamp('created_by')->nullable();
+            $table->timestamp('modified_by')->nullable();
             $table->timestamps();
         });
     }
