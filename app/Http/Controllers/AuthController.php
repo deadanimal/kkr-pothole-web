@@ -52,7 +52,7 @@ class AuthController extends Controller
                     'link' => $verifymaillink
                 ];
         
-                Mail::to($validatedData['email'])->send(new \App\Mail\RegisterVerification($maildata));
+                Mail::to($request->email)->send(new \App\Mail\RegisterVerification($maildata));
         
                 return response()->json([
                     'access_token' => $token,
