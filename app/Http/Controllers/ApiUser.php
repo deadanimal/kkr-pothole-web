@@ -82,7 +82,7 @@ class ApiUser extends Controller
     }
 
     public function forgot_user(Request $request){
-        
+
         $user = User::where('email',$request->email)->first();
         if($user != null) {
             $fourRandom = rand(1000,9999);
@@ -93,18 +93,21 @@ class ApiUser extends Controller
                 'email' => $user->email,
                 'password' => $defpassword
             ];
-    
+
             Mail::to($request->email)->send(new \App\Mail\ForgotPassword($maildata));
 
             $user->password = Hash::make($defpassword);
             $user->save();
-            $response = 1;
-            
+            $header = "Berjaya";
+            $response = "Kata laluan sementara telah dihantar ke e-mel ".$user->email.". Sila semak e-mel anda dan bagi tujuan keselamatan, sila kemas kini kepada kata laluan yang baharu.";
+
         }else{
-            $response = "Email tiada dalam pengkalan data ahli berdaftar. Sila cuba lagi.";
+            $header = "Tidak Berjaya";
+            $response = "E-mel yang diberikan belum wujud. Mohon daftar sebagai pengguna untuk menggunakan aplikasi MyPotholes.";
         }
-        
-        return response()->json(['message' => $response]);
-        
+
+        return response()->json(['message' => $response,
+    'title' => $header]);
+
     }
 }
