@@ -47,7 +47,7 @@ class AuthController extends Controller
                 $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
         
                 $maildata = [
-                    'name' => $validatedData['name'],
+                    'name' => $request->name,
                     'doc_no' => $request->doc_no,
                     'link' => $verifymaillink
                 ];
