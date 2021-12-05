@@ -90,7 +90,7 @@ class ApiUser extends Controller
 
             $maildata = [
                 'name' => $user->name,
-                'doc_no' => $user->doc_no,
+                'email' => $user->email,
                 'password' => $defpassword
             ];
     

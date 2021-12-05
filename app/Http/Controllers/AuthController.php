@@ -21,37 +21,48 @@ class AuthController extends Controller
 
     public function register_user(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'string|min:8',
-        ]);
+        // $validatedData = $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|string|email|max:255|unique:users',
+        //     'password' => 'string|min:8',
+        // ]);
 
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
-            'telefon' => $request->telefon,
-            'doc_no' => $request->doc_no,
-            'doc_type' => $request->doc_type,
-        ]);
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
-
-        $maildata = [
-            'name' => $validatedData['name'],
-            'doc_no' => $request->doc_no,
-            'link' => $verifymaillink
-        ];
-
-        Mail::to($validatedData['email'])->send(new \App\Mail\RegisterVerification($maildata));
-
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-        ]);
+        $checkemail = User::where('email',$request->email)->first();
+        if($checkemail == null) {
+            $checkdoc = User::where('doc_no',$request->doc_no)->first();
+            if($checkdoc != null) {
+                return response()->json(['message' => "faildoc"]);
+            }else{
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'telefon' => $request->telefon,
+                    'doc_no' => $request->doc_no,
+                    'doc_type' => $request->doc_type,
+                ]);
+        
+                $token = $user->createToken('auth_token')->plainTextToken;
+        
+                $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
+        
+                $maildata = [
+                    'name' => $validatedData['name'],
+                    'doc_no' => $request->doc_no,
+                    'link' => $verifymaillink
+                ];
+        
+                Mail::to($validatedData['email'])->send(new \App\Mail\RegisterVerification($maildata));
+        
+                return response()->json([
+                    'access_token' => $token,
+                    'token_type' => 'Bearer',
+                    'message' => 'success'
+                ]);
+            }
+        }else{
+            return response()->json(['message' => "failemail"]);
+        }
     }
     public function register_admin(Request $request)
     {
