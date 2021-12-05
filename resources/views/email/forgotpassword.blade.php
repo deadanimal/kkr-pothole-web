@@ -3,7 +3,7 @@
 <p>Tuan/Puan,</p>
 <p>Aplikasi MyPotholes telah menerima permohonan lupa kata laluan daripada pihak Tuan/Puan. Berikut adalah butiran pengguna:</p>
 <p>Nama : {{ $name }}</p>
-<p>ID Pengguna : {{$email}}</p>
+<p>Emel Pengguna : {{$email}}</p>
 <br>
 <b><p>Password Sementara : {{$password}}</p></b>
 <br>
