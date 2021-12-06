@@ -1,4 +1,4 @@
-<h5>Notifikasi Pendaftaran Pengguna</h5> 
+<h5>Notifikasi Pendaftaran Pengguna</h5>
 
 <p>Salam Sejahtera,</p>
 <br>
@@ -9,7 +9,7 @@
 <p>Berikut adalah butiran permohonan</p>
 <br>
 <p>Nama : {{ $name }}</p>
-<p>ID Pengguna : {{$doc_no}}</p>
+<p>ID Pengguna : {{$email}}</p>
 <br>
 <br>
 <p><strong>Sistem MyPotholes Malaysia</strong></p>
