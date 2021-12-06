@@ -36,7 +36,7 @@ class RegisterVerification extends Mailable
         return $this->view('email.registeruser')->with([
             // 'jenis_permohonan'=>$this->permohonan->jenis_permohonan,
             'name'=>$this->user['name'],
-            'emel'=>$this->user['email'],
+            'doc_no'=>$this->user['doc_no'],
             'link'=>$this->user['link']
             // 'name'=>$this->user->name,
             // 'doc_no'=>$this->user->doc_no,
