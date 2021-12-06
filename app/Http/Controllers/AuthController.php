@@ -47,12 +47,12 @@ class AuthController extends Controller
                 $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
         
                 $maildata = [
-                    'name' => $validatedData['name'],
+                    'name' => $request->name,
                     'doc_no' => $request->doc_no,
                     'link' => $verifymaillink
                 ];
         
-                Mail::to($validatedData['email'])->send(new \App\Mail\RegisterVerification($maildata));
+                Mail::to($request->email)->send(new \App\Mail\RegisterVerification($maildata));
         
                 return response()->json([
                     'access_token' => $token,
