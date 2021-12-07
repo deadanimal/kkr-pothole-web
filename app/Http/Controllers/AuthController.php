@@ -48,7 +48,7 @@ class AuthController extends Controller
         
                 $maildata = [
                     'name' => $request->name,
-                    'doc_no' => $request->doc_no,
+                    'email' => $request->email,
                     'link' => $verifymaillink
                 ];
         
