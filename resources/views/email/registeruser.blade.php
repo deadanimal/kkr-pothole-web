@@ -9,7 +9,7 @@
 <p>Berikut adalah butiran permohonan</p>
 <br>
 <p>Nama : {{ $name }}</p>
-<p>Email : {{$email}}</p>
+<p>Email Pengguna: {{$email}}</p>
 <br>
 <br>
 <p><strong>Sistem MyPotholes Malaysia</strong></p>
