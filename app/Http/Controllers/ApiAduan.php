@@ -13,7 +13,7 @@ class ApiAduan extends Controller
 {
     public function index()
     {
-        $aduan = Aduan::all();
+        $aduan = Aduan::orderBy('status_code')->get();
         return response()->json($aduan);
     }
 
