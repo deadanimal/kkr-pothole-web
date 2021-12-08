@@ -10,6 +10,7 @@ use App\Models\User;
 use Laravel\Sanctum\PersonalAccessToken;
 
 use App\Mail\RegisterVerification;
+use App\Mail\RegisterAdmin;
 
 class AuthController extends Controller
 {
@@ -71,10 +72,13 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
         ]);
 
+        $fourRandom = rand(1000,9999);
+        $defpassword = "MyPotHoles".$fourRandom;
+
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
-            'password' => Hash::make('password'),
+            'password' => Hash::make($defpassword),
             'telefon' => $request->telefon,
             'doc_no' => $request->doc_no,
             'doc_type' => $request->doc_type,
@@ -90,11 +94,13 @@ class AuthController extends Controller
 
             $maildata = [
                 'name' => $validatedData['name'],
-                'doc_no' => $request->doc_no,
+                'email' => $validatedData['email'],
+                'role' => $request->jawatan,
+                'password' => $defpassword,
                 'link' => $verifymaillink
             ];
 
-            Mail::to($validatedData['email'])->send(new \App\Mail\RegisterVerification($maildata));
+            Mail::to($validatedData['email'])->send(new \App\Mail\RegisterAdmin($maildata));
 
         return response()->json([
             'access_token' => $token,
