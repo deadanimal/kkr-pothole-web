@@ -87,7 +87,13 @@ class AuthController extends Controller
             'role' => $request->role,
             'gambar_id' => $request->gambar_id,
         ]);
-
+        $role = "";
+        if($request->role == "admin"){
+            $role = "Admin Jalan";
+        }
+        if($request->role == "super_admin"){
+            $role = "Admin Jalan";
+        }
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
@@ -95,7 +101,7 @@ class AuthController extends Controller
             $maildata = [
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
-                'role' => $request->role,
+                'role' => $role,
                 'password' => $defpassword,
                 'link' => $verifymaillink
             ];
