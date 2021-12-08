@@ -33,7 +33,7 @@ class RegisterVerification extends Mailable
     public function build()
     {
         //($this->user['name'] );
-        return $this->view('email.registeruser')->with([
+        return $this->subject('Pengesahan Pendaftaran Pengguna Aplikasi MyPotholes')->view('email.registeruser')->with([
             // 'jenis_permohonan'=>$this->permohonan->jenis_permohonan,
             'name'=>$this->user['name'],
             'email'=>$this->user['email'],

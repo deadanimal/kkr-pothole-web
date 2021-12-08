@@ -33,7 +33,7 @@ class RegisterAdmin extends Mailable
     public function build()
     {
         //($this->user['name'] );
-        return $this->view('email.registeradmin')->with([
+        return $this->subject('Pengesahan Pendaftaran Admin Aplikasi MyPotholes')->view('email.registeradmin')->with([
             'name'=>$this->user['name'],
             'email'=>$this->user['email'],
             'role'=>$this->user['role'],
