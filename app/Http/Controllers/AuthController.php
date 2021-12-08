@@ -95,7 +95,7 @@ class AuthController extends Controller
             $maildata = [
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
-                'role' => $request->jawatan,
+                'role' => $request->role,
                 'password' => $defpassword,
                 'link' => $verifymaillink
             ];
