@@ -63,6 +63,9 @@ class AuthController extends Controller
                 ]);
             }
         }else{
+            $del_pic = Gambar::where('id',$request->gambar_id);
+            $del_pic->delete();
+
             return response()->json(['message' => "failemail"]);
         }
     }
