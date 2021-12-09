@@ -11,6 +11,7 @@ use Laravel\Sanctum\PersonalAccessToken;
 
 use App\Mail\RegisterVerification;
 use App\Models\Gambar;
+use App\Mail\RegisterAdmin;
 
 class AuthController extends Controller
 {
@@ -78,10 +79,13 @@ class AuthController extends Controller
             if($checkdoc != null) {
                 return response()->json(['message' => "faildoc"]);
             }else{
+                $fourRandom = rand(1000,9999);
+                $defpassword = "MyPotHoles".$fourRandom;
+
                 $user = User::create([
                     'name' => $request->name,
                     'email' => $request->email,
-                    'password' => Hash::make('password'),
+                    'password' => Hash::make($defpassword),
                     'telefon' => $request->telefon,
                     'doc_no' => $request->doc_no,
                     'doc_type' => $request->doc_type,
@@ -90,18 +94,27 @@ class AuthController extends Controller
                     'role' => $request->role,
                     'gambar_id' => $request->gambar_id,
                 ]);
-
+                $role = "";
+                if($request->role == "admin"){
+                    $role = "Admin Jalan";
+                }
+                if($request->role == "super_admin"){
+                    $role = "Admin Jalan";
+                }
                 $token = $user->createToken('auth_token')->plainTextToken;
+
 
                 $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
 
-                $maildata = [
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'link' => $verifymaillink
-                ];
+                    $maildata = [
+                        'name' => $request->name,
+                        'email' => $request->email,
+                        'role' => $role,
+                        'password' => $defpassword,
+                        'link' => $verifymaillink
+                    ];
 
-                Mail::to($request->email)->send(new \App\Mail\RegisterVerification($maildata));
+                    Mail::to($request->email)->send(new \App\Mail\RegisterVerification($maildata));
 
                 return response()->json([
                     'access_token' => $token,
@@ -115,6 +128,7 @@ class AuthController extends Controller
 
             return response()->json(['message' => "failemail"]);
         }
+
 
     }
 

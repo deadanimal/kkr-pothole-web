@@ -1,4 +1,4 @@
-<h5>Notifikasi Pengesahan Pendaftaran Pengguna Aplikasi MyPotholes</h5>
+<h5>Notifikasi Pengesahan Pendaftaran Admin Aplikasi MyPotholes</h5>
 
 <p>Salam Sejahtera,</p>
 <p>Tuan/Puan,</p>
@@ -6,7 +6,8 @@
 <p>Terima kasih di atas pendaftaran akaun bagi menggunakan aplikasi mudah alih MyPotholes. Berikut adalah butiran pendaftaran:</p>
 <br>
 <p>Nama : {{ $name }}</p>
-<p>ID Pengguna: {{$email}}</p>
+<p>Email Pengguna: {{$email}}</p>
+<p>Peranan : {{ $role }}</p>
 <br>
 <p>Sila sahkan pendaftaran untuk pengaktifan akaun Tuan/Puan:</p>
 <a href="{{$link}}">Click Here</a>

@@ -9,7 +9,7 @@ use Illuminate\Queue\SerializesModels;
 
 use App\Models\User;
 
-class RegisterVerification extends Mailable
+class RegisterAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -33,13 +33,12 @@ class RegisterVerification extends Mailable
     public function build()
     {
         //($this->user['name'] );
-        return $this->subject('Pengesahan Pendaftaran Pengguna Aplikasi MyPotholes')->view('email.registeruser')->with([
-            // 'jenis_permohonan'=>$this->permohonan->jenis_permohonan,
+        return $this->subject('Pengesahan Pendaftaran Admin Aplikasi MyPotholes')->view('email.registeradmin')->with([
             'name'=>$this->user['name'],
             'email'=>$this->user['email'],
+            'role'=>$this->user['role'],
+            'password'=>$this->user['password'],
             'link'=>$this->user['link']
-            // 'name'=>$this->user->name,
-            // 'doc_no'=>$this->user->doc_no,
         ]);
     }
 }
