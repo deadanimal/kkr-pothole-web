@@ -10,7 +10,7 @@
 <p>Peranan : {{ $role }}</p>
 <br>
 <p>Sila sahkan pendaftaran untuk pengaktifan akaun Tuan/Puan:</p>
-<a href="{{$link}}">Click Here</a>
+<a href="{{$link}}">Klik Untuk Sahkan</a>
 <br>
 <p>Mohon lengkapkan butiran profil anda melalui aplikasi mudah alih MyPotholes menggunakan akaun yang telah didaftarkan.</p>
 <br>
