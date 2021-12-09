@@ -13,6 +13,7 @@
 <a href="{{$link}}">Klik Untuk Sahkan</a>
 <br>
 <p>Mohon lengkapkan butiran profil anda melalui aplikasi mudah alih MyPotholes menggunakan akaun yang telah didaftarkan.</p>
+<b><p>Password Sementara : {{$password}}</p></b>
 <br>
 <p>Sekian.</p>
 <br>
