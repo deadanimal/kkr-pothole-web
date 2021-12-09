@@ -10,6 +10,7 @@ use App\Models\User;
 use Laravel\Sanctum\PersonalAccessToken;
 
 use App\Mail\RegisterVerification;
+use App\Models\Gambar;
 
 class AuthController extends Controller
 {
@@ -41,19 +42,19 @@ class AuthController extends Controller
                     'doc_no' => $request->doc_no,
                     'doc_type' => $request->doc_type,
                 ]);
-        
+
                 $token = $user->createToken('auth_token')->plainTextToken;
-        
+
                 $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
-        
+
                 $maildata = [
                     'name' => $request->name,
                     'email' => $request->email,
                     'link' => $verifymaillink
                 ];
-        
+
                 Mail::to($request->email)->send(new \App\Mail\RegisterVerification($maildata));
-        
+
                 return response()->json([
                     'access_token' => $token,
                     'token_type' => 'Bearer',
@@ -66,40 +67,55 @@ class AuthController extends Controller
     }
     public function register_admin(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-        ]);
+        // $validatedData = $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|string|email|max:255|unique:users',
+        // ]);
 
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make('password'),
-            'telefon' => $request->telefon,
-            'doc_no' => $request->doc_no,
-            'doc_type' => $request->doc_type,
-            'organisasi' => $request->organisasi,
-            'jawatan' => $request->jawatan,
-            'role' => $request->role,
-            'gambar_id' => $request->gambar_id,
-        ]);
+        $checkemail = User::where('email',$request->email)->first();
+        if($checkemail == null) {
+            $checkdoc = User::where('doc_no',$request->doc_no)->first();
+            if($checkdoc != null) {
+                return response()->json(['message' => "faildoc"]);
+            }else{
+                $user = User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make('password'),
+                    'telefon' => $request->telefon,
+                    'doc_no' => $request->doc_no,
+                    'doc_type' => $request->doc_type,
+                    'organisasi' => $request->organisasi,
+                    'jawatan' => $request->jawatan,
+                    'role' => $request->role,
+                    'gambar_id' => $request->gambar_id,
+                ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+                $token = $user->createToken('auth_token')->plainTextToken;
 
-        $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
+                $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
 
-            $maildata = [
-                'name' => $validatedData['name'],
-                'doc_no' => $request->doc_no,
-                'link' => $verifymaillink
-            ];
+                $maildata = [
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'link' => $verifymaillink
+                ];
 
-            Mail::to($validatedData['email'])->send(new \App\Mail\RegisterVerification($maildata));
+                Mail::to($request->email)->send(new \App\Mail\RegisterVerification($maildata));
 
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-        ]);
+                return response()->json([
+                    'access_token' => $token,
+                    'token_type' => 'Bearer',
+                    'message' => 'success'
+                ]);
+            }
+        }else{
+            $del_pic = Gambar::where('id',$request->gambar_id)->get();
+            $del_pic->delete();
+
+            return response()->json(['message' => "failemail"]);
+        }
+
     }
 
     //use this method to signin users
