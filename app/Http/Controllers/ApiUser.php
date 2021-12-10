@@ -14,7 +14,7 @@ class ApiUser extends Controller
 {
     public function index()
     {
-        $users = User::where('is_active', 1)->get();
+        $users = User::all();
         return response()->json($users);
     }
 
@@ -36,13 +36,13 @@ class ApiUser extends Controller
 
     public function admin_show()
     {
-        $users = User::where('role','admin')->get();
+        $users = User::where('role','admin')->where('is_active', 1)->get();
         return response()->json($users);
     }
 
     public function superadmin_show()
     {
-        $users = User::where('role','super_admin')->get();
+        $users = User::where('role','super_admin')->where('is_active', 1)->get();
         return response()->json($users);
     }
 
@@ -77,10 +77,15 @@ class ApiUser extends Controller
 
     public function destroy(User $user)
     {
-        $user->update([
+        $user->delete();
+        return response()->json($user);
+    }
+
+    public function deactive_admin(Request $request, User $user)
+    {
+        $user->where('id',$request->id)->update([
             'is_active' => 0,
         ]);
-        // $user->delete();
         return response()->json($user);
     }
 

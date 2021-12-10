@@ -29,6 +29,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 //     return auth()->user();
 // });
 Route::post('/auth/user', [AuthController::class, 'get_auth_user']);
+Route::post('/deactive_admin', [ApiUser::class, 'deactive_admin']);
 Route::get('/user/admin', [ApiUser::class, 'admin_show']);
 Route::get('/user/superadmin', [ApiUser::class, 'superadmin_show']);
 Route::get('getdaerah/{id}', [DaerahController::class, 'get_daerah']);
