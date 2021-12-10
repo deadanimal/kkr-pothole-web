@@ -6,15 +6,14 @@
 <p>Terima kasih di atas pendaftaran akaun bagi menggunakan aplikasi mudah alih MyPotholes. Berikut adalah butiran pendaftaran:</p>
 <br>
 <p>Nama : {{ $name }}</p>
-<p>Email Pengguna: {{$email}}</p>
+<p>ID Pengguna: {{$email}}</p>
 <p>Peranan : {{ $role }}</p>
 <br>
 <p>Sila sahkan pendaftaran untuk pengaktifan akaun Tuan/Puan:</p>
-<a href="{{$link}}">Klik Untuk Sahkan</a>
+<a href="{{$link}}">Klik Untuk Sahkan!</a>
 <br>
 <p>Mohon lengkapkan butiran profil anda melalui aplikasi mudah alih MyPotholes menggunakan akaun yang telah didaftarkan.</p>
 <b><p>Password Sementara : {{$password}}</p></b>
-<br>
 <p>Sekian.</p>
 <br>
 <br>

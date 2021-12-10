@@ -14,7 +14,7 @@ class ApiUser extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::where('is_active', 1)->get();
         return response()->json($users);
     }
 
@@ -77,7 +77,10 @@ class ApiUser extends Controller
 
     public function destroy(User $user)
     {
-        $user->delete();
+        $user->update([
+            'is_active' => 0,
+        ]);
+        // $user->delete();
         return response()->json($user);
     }
 
