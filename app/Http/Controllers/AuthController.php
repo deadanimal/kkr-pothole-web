@@ -156,6 +156,13 @@ class AuthController extends Controller
                 ],
                 405,
             );
+        } else if($user->is_active == 0){
+            return response()->json(
+                [
+                    'message' => 'Akaun ini tidak boleh dicapai aksesnya',
+                ],
+                405,
+            );
         }
 
         $token = $user->createToken('auth_token')->plainTextToken;
