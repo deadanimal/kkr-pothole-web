@@ -81,11 +81,12 @@ class ApiUser extends Controller
         return response()->json($user);
     }
 
-    public function deactive_admin(Request $request, User $user)
+    public function deactive_admin(Request $request)
     {
-        $user->where('id',$request->id)->update([
+        User::where('id',$request->id)->update([
             'is_active' => 0,
         ]);
+        $user = User::where('id',$request->id)->get();
         return response()->json($user);
     }
 
