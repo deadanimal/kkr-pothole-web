@@ -181,6 +181,7 @@ class ApiAduan extends Controller
                 return ['message' => 'Error, Data cannot be synced with SISPAA API!'];
             }
             $res = $resp->data->result[0];
+
             if($res->response_code == 200){
 
                 $aduan = Aduan::where('sispaa_id',$res->sispaa_id)->update([
@@ -193,6 +194,15 @@ class ApiAduan extends Controller
             }
 
 
+    }
+
+    public function aduan_by_month_year(Request $request){
+
+        $aduan = Aduan:: whereMonth('created_at', $request->bulan)
+        ->whereYear('created_at', $request->tahun)
+        ->get();
+
+        return $aduan;
     }
 
 

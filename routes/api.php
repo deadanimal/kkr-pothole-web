@@ -38,6 +38,8 @@ Route::post('get_jkr', [DaerahController::class, 'get_jkr']);
 Route::post('/get_pbt', [ApiAduan::class, 'get_pbt']);
 Route::post('/get_status_sispaa', [ApiAduan::class, 'get_status_sispaa']);
 Route::get('/get_aduan_by_user/{id}', [ApiAduan::class, 'get_aduan_by_user']);
+Route::post('/get_aduan_by_month_year', [ApiAduan::class, 'aduan_by_month_year']);
+
 
 Route::resource('aduan', ApiAduan::class);
 Route::resource('jalan', ApiJalan::class);
