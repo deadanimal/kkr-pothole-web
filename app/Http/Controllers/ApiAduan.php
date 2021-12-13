@@ -188,9 +188,10 @@ class ApiAduan extends Controller
                     'status_desc' => $res->status_desc,
                     'nota' => $res->notes,
                 ]);
-            }
 
             return $aduan;
+            }
+
 
     }
 
