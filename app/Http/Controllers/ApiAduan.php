@@ -177,6 +177,9 @@ class ApiAduan extends Controller
             curl_setopt($ch, CURLOPT_TIMEOUT, 5);
 
             $resp = json_decode(curl_exec($ch));
+            if($resp->data == null){
+                return ['message' => 'Error, Data cannot be synced with SISPAA API!'];
+            }
             $res = $resp->data->result[0];
             if($res->response_code == 200){
 
