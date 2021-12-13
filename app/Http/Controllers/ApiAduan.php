@@ -174,7 +174,7 @@ class ApiAduan extends Controller
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
             // Timeout in seconds
-            curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 5);
 
             $resp = json_decode(curl_exec($ch));
             $res = $resp->data->result[0];
