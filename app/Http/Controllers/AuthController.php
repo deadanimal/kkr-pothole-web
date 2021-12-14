@@ -42,6 +42,7 @@ class AuthController extends Controller
                     'telefon' => $request->telefon,
                     'doc_no' => $request->doc_no,
                     'doc_type' => $request->doc_type,
+                    'gambar_id' => $request->gambar_id,
                 ]);
 
                 $token = $user->createToken('auth_token')->plainTextToken;
