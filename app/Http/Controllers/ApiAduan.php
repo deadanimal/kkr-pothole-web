@@ -40,9 +40,9 @@ class ApiAduan extends Controller
         $aduan = new Aduan;
         $latestRef = Aduan::orderBy('created_at','DESC')->first();
         if(empty($latestRef)){
-            $aduan->reference_id = 'MPOTKKR.'.str_pad(1, 7, "0", STR_PAD_LEFT);
+            $aduan->reference_id = 'MPOTH.'.str_pad(1, 7, "0", STR_PAD_LEFT);
         } else {
-            $aduan->reference_id = 'MPOTKKR.'.str_pad($latestRef->id + 1, 7, "0", STR_PAD_LEFT);
+            $aduan->reference_id = 'MPOTH.'.str_pad($latestRef->id + 1, 7, "0", STR_PAD_LEFT);
         }
         $aduan->title = $request->title;
         $aduan->detail = $request->detail;
@@ -79,7 +79,7 @@ class ApiAduan extends Controller
             'reference_id' => $aduan->reference_id,
             'pbt_code' => $aduan->pbt_code,
             'complaint_type' => 'CMP',
-            'complaint_category' => ''
+            'complaint_category' => $request->complaint_category
         ]);
 
 
