@@ -52,7 +52,7 @@ class ApiAduan extends Controller
         $aduan->response_party = $request->response_party;
         $aduan->nama_jalan = $request->nama_jalan;
         $aduan->pbt_code = $request->pbt_code;
-        $aduan->complaint_type = $request->complaint_type;
+        $aduan->complaint_type = 'CMP';
         $aduan->complaint_category = $request->complaint_category;
         $aduan->complaint_category_code = $request->complaint_category_code;
         $aduan->gambar_id = $request->gambar_id;
@@ -89,10 +89,11 @@ class ApiAduan extends Controller
             $aduan->sispaa_id = $res['data']['sispaaid'];
             $aduan->save();
             return ['success' => true,
-            $aduan];
+            $aduan, $res['data']];
         } else if($res['data']['status'] === 409){
             return ['failed' => true,
-            $aduan];
+            $aduan,
+            $res['data']];
         }
 
 
@@ -119,7 +120,7 @@ class ApiAduan extends Controller
         $aduan->response_party = $request->response_party;
         $aduan->nama_jalan = $request->nama_jalan;
         $aduan->pbt_code = $request->pbt_code;
-        $aduan->complaint_type = $request->complaint_type;
+        // $aduan->complaint_type = 'CMP';
         $aduan->complaint_category = $request->complaint_category;
         $aduan->complaint_category_code = $request->complaint_category_code;
         $aduan->status_code = $request->status_code;
