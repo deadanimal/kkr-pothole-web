@@ -13,13 +13,13 @@ class ApiAduan extends Controller
 {
     public function index()
     {
-        $aduan = Aduan::all();
+        $aduan = Aduan::orderBy('created_at','DESC')->get();
         return response()->json($aduan);
     }
 
     public function get_aduan_by_user($id){
 
-        $aduan = Aduan::where('pengadu_id', $id)->get();
+        $aduan = Aduan::where('pengadu_id', $id)->orderBy('created_at','DESC')->get();
         if(!empty($aduan)){
             foreach ($aduan as $ad) {
                 $this->get_status_sispaa($ad->sispaa_id);
