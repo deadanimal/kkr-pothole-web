@@ -85,12 +85,12 @@ class ApiAduan extends Controller
 
         // return[$res['data'], $aduan, $user];
 
-        if($res['data']['status'] === 200){
+        if($res['data'] && $res['data']['status'] === 200){
             $aduan->sispaa_id = $res['data']['sispaaid'];
             $aduan->save();
             return ['success' => true,
             $aduan, $res['data']];
-        } else if($res['data']['status'] === 409){
+        } else if($res['data'] && $res['data']['status'] === 409){
             return ['failed' => true,
             $aduan,
             $res['data']];
