@@ -94,6 +94,8 @@ class ApiAduan extends Controller
             return ['failed' => true,
             $aduan,
             $res['data']];
+        } else {
+            return $aduan;
         }
 
 
