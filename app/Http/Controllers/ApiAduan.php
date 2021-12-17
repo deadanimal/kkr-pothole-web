@@ -78,7 +78,7 @@ class ApiAduan extends Controller
             'location_address' => $request->address,
             'reference_id' => $aduan->reference_id,
             'pbt_code' => $aduan->pbt_code,
-            'complaint_type' => 'CMP',
+            'complaint_type' => $aduan->complaint_type,
             'complaint_category' => $request->complaint_category
         ]);
 
