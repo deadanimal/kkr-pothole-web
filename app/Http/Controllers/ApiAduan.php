@@ -62,7 +62,7 @@ class ApiAduan extends Controller
 
         $res = Http::withHeaders([
             'Content-Type' => 'application/json',
-            'Authorization' => 'BPA-KKR-API-TEST'
+            'Authorization' => 'KKRMYPOTHOLES28309'
         ])->post('https://gateway.spab.gov.my/aduan-api/v1/newcase',
         [
             'complainant_name' => $user->name,
@@ -81,6 +81,7 @@ class ApiAduan extends Controller
             'complaint_type' => $aduan->complaint_type,
             'complaint_category' => $request->complaint_category
         ]);
+
 
 
         // return[$res['data'], $aduan, $user];
@@ -164,7 +165,7 @@ class ApiAduan extends Controller
             $headers = array(
             // 'Accept: application/json',
             'Content-Type: application/json',
-            'Authorization: BPA-KKR-API-TEST'
+            'Authorization: KKRMYPOTHOLES28309'
 
             );
             curl_setopt($ch, CURLOPT_URL, 'https://gateway.spab.gov.my/aduan-api/v1/status/');
