@@ -47,7 +47,7 @@ class AuthController extends Controller
 
                 $token = $user->createToken('auth_token')->plainTextToken;
 
-                $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
+                $verifymaillink="http://mypotholes.kkr.gov.my/confirm-email/".$user->id;
 
                 $maildata = [
                     'name' => $request->name,
@@ -108,7 +108,7 @@ class AuthController extends Controller
                 $token = $user->createToken('auth_token')->plainTextToken;
 
 
-                $verifymaillink="https://kkr-pothole-stg.prototype.com.my/confirm-email/".$user->id;
+                $verifymaillink="http://mypotholes.kkr.gov.my/confirm-email/".$user->id;
 
                     $maildata = [
                         'name' => $request->name,
