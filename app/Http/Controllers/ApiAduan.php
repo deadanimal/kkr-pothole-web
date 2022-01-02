@@ -82,8 +82,6 @@ class ApiAduan extends Controller
             'complaint_category' => $request->complaint_category
         ]);
 
-
-
         // return[$res['data'], $aduan, $user];
 
         if($res['data'] && $res['data']['status'] === 200){
