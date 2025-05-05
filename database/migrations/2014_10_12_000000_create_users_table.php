@@ -15,11 +15,20 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
+            $table->string('doc_type')->nullable();
+            $table->string('doc_no')->nullable();
+            $table->string('telefon')->nullable();
             $table->string('email')->unique();
+            $table->enum('role', ['pengadu', 'admin', 'super_admin'])->default('pengadu');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('password')->nullable();
+            $table->string('organisasi')->nullable();
+            $table->string('jawatan')->nullable();
+            $table->string('gambar_id')->nullable();
+            $table->foreignId('created_by')->nullable();
+            $table->foreignId('modified_by')->nullable();
+            $table->rememberToken()->nullable();
             $table->timestamps();
         });
     }
